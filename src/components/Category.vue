@@ -22,10 +22,10 @@
 
 <script>
 export default {
-  name: 'hello',
+  name: 'Category',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      a: 'Welcome to Your Vue.js App'
     }
   }
 }

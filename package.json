@@ -2,7 +2,7 @@
   "name": "symfony-project",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "IDEA-PC\Roman <rom1119@poczta.onet.pl>",
+  "author": "IDEA-PC Roman <rom1119@poczta.onet.pl>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
@@ -13,7 +13,11 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
-    "vue": "^2.0.1"
+    "jquery": "^1.12.0",
+    "bootstrap": "*",
+    "vue": "^2.0.1",
+    "vue-resource": "^1.0.3",
+    "vue-router": "^2.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",
@@ -57,7 +61,6 @@
     "sinon-chai": "^2.8.0",
     "inject-loader": "^2.0.1",
     "isparta-loader": "^2.0.0",
-    "phantomjs-prebuilt": "^2.1.3",
     "chromedriver": "^2.21.2",
     "cross-spawn": "^4.0.2",
     "nightwatch": "^0.9.8",
@@ -69,6 +72,8 @@
     "url-loader": "^0.5.7",
     "vue-loader": "^9.4.0",
     "vue-style-loader": "^1.0.0",
+    "vue-resource": "^1.0.3",
+    "vue-router": "^2.0.0",
     "webpack": "^1.13.2",
     "webpack-dev-middleware": "^1.8.3",
     "webpack-hot-middleware": "^2.12.2",
@@ -76,6 +81,6 @@
   },
   "engines": {
     "node": ">= 4.0.0",
-    "npm": ">= 3.0.0"
+    "npm": ">= 2.15.0"
   }
 }

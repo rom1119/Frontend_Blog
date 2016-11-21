@@ -1,0 +1,48 @@
+@import "sass/compass";
+@import "sass/animate";
+@import "sass/lemonade";
+
+$red: #ff0000;
+$blue: #0000ff;
+$prop: "background-color";
+$row: 100%;
+$total: 10;
+$list: 1px 1px 2px 2px red;
+$image: "photo.jpg";
+
+@function col() {
+	$col: $row / 12;
+	@return $col;
+}
+
+@mixin font() {
+	color: $red;	
+	font: {
+		size: 2em;
+		weight: bold;
+	}
+}
+
+.logo {
+	a {
+		img {
+			
+		}
+	}
+}
+
+ul li a {
+	@include link-colors(#00c, #0cc, #c0c, #ccc, #cc0);
+}
+
+
+.container {
+	background-color: red;
+	width: col();
+	
+}
+
+body {
+	background-image: url(#{$image});
+	background-size: cover;
+}

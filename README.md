@@ -5,8 +5,12 @@
 ## Build Setup
 
 ``` bash
-# install dependencies
+# install npm dependencies
 npm install
+
+#install symfony dependecies
+$ cd api
+composer install
 
 # serve with hot reload at localhost:8080
 npm run dev
