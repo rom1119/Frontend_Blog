@@ -1,0 +1,95 @@
+// =========== helpers ================
+
+@import "helpers/backgrounds";
+@import "helpers/fonts";
+@import "helpers/margins";
+@import "helpers/mixins";
+@import "helpers/paddings";
+@import "helpers/shadows";
+
+// =========== components ================
+
+@import "components/buttons";
+@import "components/inputs";
+@import "components/labels";
+
+// =========== layout ================
+
+@import "layout/header";
+@import "layout/content";
+@import "layout/sidebar";
+@import "layout/footer";
+
+// =========== pages ================
+
+@import "pages/home";
+@import "pages/contact";
+@import "pages/one-post";
+@import "pages/portfolio";
+@import "pages/about";
+@import "pages/portfolio";
+
+// =========== libs ================
+
+@import "compass/compass";
+@import "compass/animate";
+@import "compass/lemonade";
+
+$red: #ff0000;
+$blue: #0000ff;
+$prop: "background-color";
+$row: 100%;
+$total: 10;
+$list: 1px 1px 2px 2px red;
+$image: "photo.jpg";
+
+@function col() {
+	$col: $row / 12;
+	@return $col;
+}
+
+@mixin font() {
+	color: $red;	
+	font: {
+		size: 2em;
+		weight: bold;
+	}
+}
+
+$shadow1: 2px 2px 10px blue;
+
+#element1 {
+    font-size: 25px;
+    background-color: #6FAEE8;
+    width: 25%;
+    margin-left: 200px;
+    font-family: lato-thin;
+		font-weight: bold;
+    transition: all 2s;
+    @include box-shadow($shadow1);
+  }
+
+ #element1:hover {
+    background-color: #FC5F5F;
+    
+}
+
+.logo {
+	a {
+		img {
+			
+		}
+	}
+}
+
+ul li a {
+	@include link-colors(#00c, #0cc, #c0c, #ccc, #cc0);
+}
+
+
+
+
+body {
+	background-size: cover;
+}
+

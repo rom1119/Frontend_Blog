@@ -3,10 +3,10 @@ import Bootstrap from 'bootstrap'
 import VueRouter from 'vue-router'
 import Resource from 'vue-resource'
 import App from './App'
-import Login from './Login'
-import Post from './components/Post'
-import Category from './components/Category'
-import Posts from './components/Posts'
+import Post from './components/pages/post'
+import Login from './components/pages/login'
+import Posts from './components/pages/posts'
+import Home from './components/pages/home'
 // import Posts from './Posts'
 // import Post from './Post'
 // import Category from './Category'
@@ -22,12 +22,12 @@ var router = new VueRouter({
 	routes: [
 		{path: '/', component: App,
 		 children: [
+		{path: '', component: Home},
 		{path: 'posts', component: Posts},
 		{path: 'post', component: Post},
-		{path: 'category', component: Category}
-	]
-},
-	{path: '/login', component: Login}
+		{path: 'login', component: Login}
+		]
+	}
 	]
 	
 })
