@@ -16,6 +16,60 @@
         </li>
         <li>
           <router-link to="category">Category</router-link>
+          <ul class="main-categories">
+            <li>
+              <router-link to="/">Programowanie</router-link>
+              <ul class="sub-categories">
+                <li>
+                 <router-link to="/">Javascript</router-link>
+                </li>
+                <li>
+                 <router-link to="/">C++</router-link>
+                </li>
+                <li>
+                <router-link to="/">Java</router-link>
+                </li>
+                <li>
+                  <router-link to="/">PHP</router-link>
+                </li>
+                <li>
+                  <router-link to="/">C#</router-link>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <router-link to="posts">Wzorce projektowe</router-link>
+              <ul>
+                <li>
+                 <router-link to="/">Singleton</router-link>
+                </li>
+                <li>
+                 <router-link to="/">Factory</router-link>
+                </li>
+                <li>
+                <router-link to="/">Abstract factory</router-link>
+                </li>
+                <li>
+                  <router-link to="/">Strategy</router-link>
+                </li>
+                <li>
+                  <router-link to="/">Observer</router-link>
+                </li>
+                <li>
+                  <router-link to="/">Flyweight</router-link>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <router-link to="category">Hardware</router-link>
+            </li>
+            <li>
+              <router-link to="login">Front-end</router-link>
+            </li>
+            <li>
+              <router-link to="register">Back-end</router-link>
+            </li>
+          </ul>
         </li>
         <li>
           <router-link to="login">Login</router-link>

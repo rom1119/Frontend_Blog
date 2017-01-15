@@ -1,0 +1,71 @@
+.main-footer {
+	width: 100%;
+	background-color: #040303;
+	.blogroll {
+		margin-top: 5px;
+		h3 {
+			@extend .header-section-footer;
+		}
+		ul.page-links {
+			li {
+				padding: $padding-footer-li;
+				a {
+					@extend .link-footer;
+				}
+			}
+		}
+	}
+	.categories {
+		margin-top: 5px;
+		h3 {
+			@extend .header-section-footer;
+		}
+		ul.main-categories {
+			li {
+				padding: $padding-footer-li;
+				a {
+					@extend .link-footer;
+				}
+			}
+		}
+	}
+	.contact-footer {
+		margin-top: 5px;
+		h3 {
+			@extend .header-section-footer;
+		}
+		form#contact-form-footer {
+			#contact-email {
+				@include label-form-footer();
+				label {
+					width: 100%;
+					#email-input {
+						@extend .input-form-footer;
+					}
+				}
+			}
+			#contact-message {
+				@include label-form-footer();
+				#message-input {
+					@extend .input-form-footer;
+				}
+			}
+			#contact-send {
+				label {
+					#submit-input {
+						margin-top: 10px;
+						padding: 5px;
+					}
+				}
+			}
+		}
+	}
+	.copyright {
+		border-top: 1px solid #777777;
+		padding: 20px 0;
+		margin-top: 20px;
+		span {
+			color: #aaaaaa;
+		}
+	}
+}

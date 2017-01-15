@@ -1,104 +1,92 @@
 <template>
   <footer class="main-footer">
-    <section class="blogroll">
-      <h3>
-        Pages
-      </h3>
-      <ul>
-        <li>
-          <router-link to="/">Home</router-link>
-        </li>
-        <li>
-          <router-link to="posts">Posts</router-link>
-        </li>
-        <li>
-          <router-link to="category">Category</router-link>
-        </li>
-        <li>
-          <router-link to="login">Login</router-link>
-        </li>
-        <li>
-          <router-link to="register">Register</router-link>
-        </li>
-      </ul>
-      
-    </section>
-    <section class="categories">
-      <h3>
-        Posts categories
-      </h3>
-      <ul>
-        <li>
-          <router-link to="/">Proggraming</router-link>
-          <ul>
+    <div class="container">
+      <div class="row">
+        <section class="blogroll col-md-4">
+          <h3>
+            Strony
+          </h3>
+          <ul class="page-links">
             <li>
-             <router-link to="/">Javascript</router-link>
+              <router-link to="/">Home</router-link>
             </li>
             <li>
-             <router-link to="/">C++</router-link>
+              <router-link to="posts">Posts</router-link>
             </li>
             <li>
-            <router-link to="/">Java</router-link>
+              <router-link to="category">Category</router-link>
             </li>
             <li>
-              <router-link to="/">PHP</router-link>
+              <router-link to="login">Login</router-link>
             </li>
             <li>
-              <router-link to="/">C#</router-link>
+              <router-link to="register">Register</router-link>
             </li>
           </ul>
-        </li>
-        <li>
-          <router-link to="posts">Design patterns</router-link>
-          <ul>
+          
+        </section>
+        <section class="categories col-md-4">
+          <h3>
+            Kategorie
+          </h3>
+          <ul class="main-categories">
             <li>
-             <router-link to="/">Singleton</router-link>
+              <router-link to="/">Programowanie</router-link>
             </li>
             <li>
-             <router-link to="/">Factory</router-link>
+              <router-link to="posts">Wzorce projektowe</router-link>
             </li>
             <li>
-            <router-link to="/">Abstract factory</router-link>
+              <router-link to="category">Hardware</router-link>
             </li>
             <li>
-              <router-link to="/">Strategy</router-link>
+              <router-link to="login">Front-end</router-link>
             </li>
             <li>
-              <router-link to="/">Observer</router-link>
-            </li>
-            <li>
-              <router-link to="/">Flyweight</router-link>
+              <router-link to="register">Back-end</router-link>
             </li>
           </ul>
-        </li>
-        <li>
-          <router-link to="category">Hardware</router-link>
-        </li>
-        <li>
-          <router-link to="login">Front-end</router-link>
-        </li>
-        <li>
-          <router-link to="register">Back-end</router-link>
-        </li>
-      </ul>
-      
-    </section>
-    <section class="contact-footer">
-      <h3>
-        Contact me
-      </h3>
-      <form accept-charset="utf-8" class="form-contact-footer" id="login-form-footer" action="" method="POST">
-        <div class="contact-email">
-          <label >
-            Email:
-            <input type="text" class="email" name="email" placeholder="nick_jonson@gmail.com">
-          </label>
+          
+        </section>
+        <section class="contact-footer col-md-4">
+          <h3>
+            Kontakt
+          </h3>
+          <form accept-charset="utf-8" id="contact-form-footer" action="" method="POST">
+            <div class="contact-form-element" id="contact-email">
+              <legend>
+                <span>
+                  Email:
+                </span>
+              </legend>
+              <label >
+                <input type="text" id="email-input" name="email" placeholder="nick_jonson@domain.com">
+              </label>
+            </div>
+            <div class="contact-form-element" id="contact-message">
+              <legend>
+                <span>
+                  Message:
+                </span>
+              </legend>
+              <textarea name="message" id="message-input" placeholder="Your message..."></textarea>
+            </div>
+            <div class="contact-form-element" id="contact-send">
+              <label for="">
+                <input type="submit" class="contact-submit" id="submit-input" value="Wyślij">
+              </label>
+            </div>
+          </form>
+        </section>
+      </div>
+      <div class="row">
+        <div class="copyright">
+          <span>
+            Copyright &copy; 2017 Develped by Roman Pytka
+          </span>
         </div>
-        <div class="contact-email">
-          <textarea name="message" id="" cols="30" rows="10">Your message...</textarea>
-        </div>
-      </form>
-    </section>
+      </div>
+    </div>
   </footer>
 </template>
 

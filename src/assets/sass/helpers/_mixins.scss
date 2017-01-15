@@ -1,0 +1,62 @@
+.link-footer {
+	color: #cccccc;
+	text-decoration: none;
+	font-size: 1em;
+	&:hover {
+		color: #999999;
+	}
+	width: 100%;
+	height: 100%;
+	display: block;
+
+}
+
+.header-section-footer {
+	font-size: 1.5em;
+	color: #ffffff;
+	padding: 10px 0;
+	font-weight: bold;
+}
+
+@mixin label-form-footer {
+	legend {
+		span {
+			color: #ffffff;
+			font-size: 1.1em;
+		}
+		margin: 10px 0;
+	}
+}
+
+@mixin placeholder($props) {
+	&::-webkit-input-placeholder {
+		@each $key, $value in $props {
+			#{$key}: $value;	
+		}
+	}
+	&::-moz-input-placeholder {
+		@each $key, $value in $props {
+			#{$key}: $value;	
+		}
+	}
+	&::-ms-input-placeholder {
+		@each $key, $value in $props {
+			#{$key}: $value;	
+		}
+	}
+
+}
+
+$footer-form-placeholder: (color: #aaaaaa, opacity: 1);
+
+.input-form-footer {
+	width: 100%;
+	padding: 10px;
+	background-color: #0F0B0B;
+	color: #bbbbbb;
+	@include placeholder($footer-form-placeholder);
+	&:focus {
+		outline: none;
+	}
+	border: 2px solid #888888;
+}

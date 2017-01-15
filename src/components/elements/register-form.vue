@@ -22,7 +22,7 @@
           </span>
         </legend>
       <label for="">
-        <input type="text" name="_username" class="input-username">
+        <input type="text" name="_username" class="input-username" required="true">
       </label>
       <span class="has-user-error"></span>
     </div>
@@ -34,10 +34,10 @@
           </span>
         </legend>
         <label for="">Wpisz hasło min. 6 znaków
-          <input type="password" name="_password" class="input-password">
+          <input type="password" name="_password" class="input-password" required="true">
         </label>
         <label for="">Potwierdż hasło
-          <input type="password" name="_password" class="input-password">
+          <input type="password" name="_password" class="input-password" required="true">
         </label>
         <span class="password-error"></span>
       </fieldset>
@@ -105,7 +105,7 @@
         </span>
       </legend>
       <label for=""> 
-        <input type="email" name="_phone" class="input-email" value="" placeholder="">   
+        <input type="email" name="_phone" class="input-email" value="" placeholder="" required="true">   
       </label>
     </div>
     <div class="form-element" id="country-element-form">
