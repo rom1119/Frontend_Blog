@@ -1,16 +1,16 @@
 <template>
-  <div id="app" class="container">
-    <div id="element1">
-      strona glowna  <i class="fa fa-facebook"></i>
-    </div>
-    <div class="alert alert-danger" >sda
-    <span class="close" data-dismiss="alert">&times;</span>
-    </div>
+  <div id="app">
+    <header-page></header-page>
+    <router-view></router-view>
+    <sidebar></sidebar>
+    <footer-page></footer-page>
   </div>
 </template>
 
 <script>
-
+import header from 'components/layout/public/header.vue'
+import post from 'components/layout/public/footer.vue'
+import sidebar from 'components/layout/public/sidebar.vue'
 
 export default {
   name: 'App',
@@ -25,13 +25,16 @@ export default {
     }
   },
   components: {
-
+    'header-page': header,
+    'sidebar': sidebar,
+    'footer-page': post
   }
 }
 </script>
 
-<style src="./assets/bootstrap/scss/bootstrap.scss"  lang="scss"></style>
+<style src="./assets/bootstrap/css/bootstrap.css"  lang="css"></style>
 <style src="./assets/bootstrap/scss/bootstrap-reboot.scss"  lang="scss"></style>
 <style src="./assets/bootstrap/scss/bootstrap-grid.scss"  lang="scss"></style>
 <style src="./assets/font-awesome-4.5.0/scss/font-awesome.scss"  lang="scss"></style>
 <style src="./assets/sass/main.scss"  lang="scss"></style>
+<style src="./assets/slider/style.css"  lang="css"></style>

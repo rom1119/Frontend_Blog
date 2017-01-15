@@ -10,7 +10,7 @@
 import post from './Post'
 
 export default {
-  name: 'admin-add-post',
+  name: 'about-post',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'

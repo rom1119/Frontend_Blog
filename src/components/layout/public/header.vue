@@ -1,11 +1,15 @@
 <template>
+  <header class="header-site">
+    <logo></logo>
     <navigation></navigation>
+  </header>
 </template>
 
 <script>
 import navigation from '../../elements/navigation.vue'
+import logo from '../../elements/logo.vue'
 export default {
-  name: "header-site",
+  name: "header-page",
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
@@ -15,12 +19,10 @@ export default {
 
   },
   components: {
-  	navigation: navigation
+  	navigation: navigation,
+    logo: logo
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
-
-</style>

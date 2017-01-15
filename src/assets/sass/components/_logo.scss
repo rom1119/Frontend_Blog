@@ -1,0 +1,41 @@
+.logo {
+	text-align: center;
+	background: $background-header;			
+	background-size: cover;
+	width: 100%;
+	padding: 30px 0;
+}
+
+.logo {
+	h1.logo-title {
+		margin-top: 1em;
+
+	}
+}
+
+.logo {
+	h1.logo-title {
+		a {
+			color: #CBCFE5;
+			text: {
+				decoration: none;
+				transform: uppercase;
+			}
+			font: {
+				weight: bold;
+				size: 2.4em;
+				family: perspective_sans_blackregular;
+			}
+			letter-spacing: 0.1em;
+		}
+	}
+	h2 {
+		padding-top: 10px;
+		color: #ADAEB0;
+		font: {
+				weight: bold;
+				size: 1.3em;
+				family: perspective_sans_blackregular;
+			}
+	}
+}

@@ -11,7 +11,7 @@
 
 
 export default {
-  name: 'post',
+  name: 'post-page',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'

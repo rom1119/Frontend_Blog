@@ -1,17 +1,16 @@
 <template>
   <div class="container">
     <div class="row asd">
-      <!--  <post v-for="x in 10" first="sahdihias"></post> -->
-      <h1>Posts</h1>
+       <post v-for="x in 10" first="sahdihias"></post>
     </div>
   </div>
 </template>
 
 <script>
-
+import post from './Post'
 
 export default {
-  name: 'posts',
+  name: 'admin-page',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
@@ -21,7 +20,7 @@ export default {
 
   },
   components: {
-
+    post: post
   }
 }
 </script>

@@ -1,20 +1,16 @@
 <template>
-  <main class="main-site">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <full-post></full-post>
-        </div>
-      </div>
+  <div class="container">
+    <div class="row asd">
+       <post v-for="x in 10" first="sahdihias"></post>
     </div>
-  </main>
+  </div>
 </template>
 
 <script>
-import post from '../../elements/full-post'
+import post from './Post'
 
 export default {
-  name: 'one-post',
+  name: 'contact-post',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
@@ -24,7 +20,7 @@ export default {
 
   },
   components: {
-    'full-post': post
+    post: post
   }
 }
 </script>

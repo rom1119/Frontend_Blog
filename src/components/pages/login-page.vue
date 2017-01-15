@@ -30,7 +30,7 @@
 //import jwt_decode from 'jwt-decode';
 
 export default {
-  name: 'Login',
+  name: 'login-page',
   data: function() {
     return {
       email: '',

@@ -1,8 +1,13 @@
 <template>
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img src="..." alt="...">
-    </a>
+  <div class="logo container">
+    <h1 class="logo-title">
+      <a href="#/home">
+        Front-end blog
+      </a>
+    </h1>
+    <h2 class="logo-desc">
+      Blog o front-endzie i nie tylko
+    </h2>
   </div>
 </template>
 
@@ -10,7 +15,7 @@
 
 
 export default {
-  name: 'post',
+  name: 'logo',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'

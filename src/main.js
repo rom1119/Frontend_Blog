@@ -3,10 +3,14 @@ import Bootstrap from 'bootstrap'
 import VueRouter from 'vue-router'
 import Resource from 'vue-resource'
 import App from './App'
-import Post from './components/pages/post'
-import Login from './components/pages/login'
-import Posts from './components/pages/posts'
-import Home from './components/pages/home'
+import Post from './components/pages/post-page'
+import Login from './components/pages/login-page'
+import Posts from './components/pages/posts-page'
+import Home from './components/pages/home-page'
+import Register from './components/pages/register-page'
+
+import scripts from './assets/js/script.js'
+	
 // import Posts from './Posts'
 // import Post from './Post'
 // import Category from './Category'
@@ -14,20 +18,25 @@ import Home from './components/pages/home'
 Vue.use(VueRouter)
 Vue.use(Resource)
 
-
-
 /* eslint-disable no-new */
 
 var router = new VueRouter({
 	routes: [
 		{path: '/', component: App,
 		 children: [
-		{path: '', component: Home},
-		{path: 'posts', component: Posts},
-		{path: 'post', component: Post},
-		{path: 'login', component: Login}
+		{path: '', name: 'home', component: Home},
+		{path: 'posts', name: 'posts', component: Posts},
+		{path: 'post', name: 'post', component: Post},
+		{path: 'register', name: 'register', component: Register},
+		{path: 'login', name: 'login', component: Login}
 		]
 	}
+	// ,
+	// {path: '/admin', component: Admin, 
+	// 	children: [
+
+	// 	]
+	// }
 	]
 	
 })

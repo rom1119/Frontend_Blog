@@ -1,33 +1,31 @@
 <template>
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+  <nav class="navbar navbar-default navigation-site">
+   <div class="navbar-header navigation-site-header">
+      <button type="button" id="hamburger" class="open-nav" data-toggle="collapse" data-target="#nav-main-page" aria-expanded="false" >
+        <span class="fa fa-bars"></span>
       </button>
-      <a class="navbar-brand" href="#">Home</a>
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#/posts">Posts<span class="sr-only">(current)</span></a></li>
-        <li><a href="#/post">Post</a></li>
-        <li><a href="#/portfolio">Portfolio</a></li>
-        <li><a href="#/about">About</a></li>
-        <li><a href="#/contact">Contact</a></li>
+    <div class="collapse navbar-collapse" id="nav-main-page">
+      <ul class="nav navbar-nav nav-main">
+        <li>
+          <router-link to="/">Home</router-link>
+        </li>
+        <li>
+          <router-link to="posts">Posts</router-link>
+        </li>
+        <li>
+          <router-link to="category">Category</router-link>
+        </li>
+        <li>
+          <router-link to="login">Login</router-link>
+        </li>
+        <li>
+          <router-link to="register">Register</router-link>
+        </li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#/login">Login</a></li>
-        <li><a href="#/register">Register</a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+    </div>
+  </nav>
 </template>
 
 <script>
@@ -48,6 +46,3 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
-
-</style>
