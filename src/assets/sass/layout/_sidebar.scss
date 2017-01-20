@@ -1,0 +1,119 @@
+$backgroud-sidebar: #111111;
+$backgroud-widget: #333333;
+$widget-sidebar: (
+	background-color: $backgroud-widget,
+	box-shadow: (3px 3px 3px 0px #777777, inset 5px 5px 3px 0px #222222),
+	border-radius: 15px,
+	padding: 25px 15px,
+	margin-top: 20px
+	);
+
+aside.sidebar {
+	background-color: $backgroud-sidebar;
+	min-height: 100%;
+	.search-widget {
+		@include add-props($widget-sidebar);
+		p {
+			text-align: center;
+			font-size: 1.1em;
+			font-family: $perspective-sansregular;
+			color: #cccccc;
+			margin-bottom: 15px;
+		}
+		#form-search {
+			height: 45px;
+			text-align: center;
+			#search-form-element {
+				height: 100%;
+				display: inline-block;
+				label {
+					height: 100%;
+					.input-search {
+						height: 100%;
+						@extend .input-form-footer;
+					}
+				}
+			}
+
+			#submit-form-element {
+				height: 100%;
+				display: inline-block;
+				button.button-search {
+					height: 100%;
+					background-image: linear-gradient(to bottom right, #444444, #666666);
+					color: #cccccc;
+					outline: none;
+					border: 0;
+					&:active {
+						background-image: linear-gradient(to bottom right, #666666, #444444);
+					}
+				}
+			}
+		}
+	}
+
+	.most-rating-widget {
+		@include add-props($widget-sidebar);
+		ul.most-rating-list {
+			li.most-rating-item {
+				margin-top: 10px;
+				margin-bottom: 10px;
+				.post-icon {
+					a {
+						.icon {
+							font-size: 2.4em;
+							color: #cccccc;
+							&:hover {
+								color: #dddddd;
+								text-shadow: 0px 0px 1px #dddddd;
+							}
+						}
+					}
+				}
+				
+				.post-info {
+					.post-title {
+						padding: 0px 0px 5px 0px;
+						h3 {
+							a {
+								color: #cccccc;
+								text-decoration: none;
+								font-family: $perspective-sansregular;
+								&:hover {
+									color: #dddddd;
+									text-shadow: 0px 0px 1px #dddddd;
+								}
+							}
+						}
+					}
+
+					.post-time {
+						//padding: 10px 5px;
+						time {
+							color: #aaaaaa;
+							font-family: $lato-italic;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.categories-widget {
+		@include add-props($widget-sidebar);
+		ul.main-categories-widget {
+			li.main-categories-item {
+				a {
+
+				}
+				ul.sub-categories-widget {
+					li.sub-categories-item {
+						a {
+
+						}
+					}
+				}
+			}
+		}
+	}
+}

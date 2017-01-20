@@ -16,7 +16,7 @@
         </li>
         <li>
           <router-link to="category">Category</router-link>
-          <ul class="main-categories">
+          <!-- <ul class="main-categories">
             <li>
               <router-link to="/">Programowanie</router-link>
               <ul class="sub-categories">
@@ -69,7 +69,7 @@
             <li>
               <router-link to="register">Back-end</router-link>
             </li>
-          </ul>
+          </ul> -->
         </li>
         <li>
           <router-link to="login">Login</router-link>

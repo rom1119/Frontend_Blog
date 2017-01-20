@@ -1,9 +1,7 @@
 <template>
-  <div class="container">
-    <div class="row asd">
+  <div class="col-md-8">
        
-      <h1>Posts</h1>
-    </div>
+    <h1>Posts</h1>
   </div>
 </template>
 

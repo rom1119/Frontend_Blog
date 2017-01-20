@@ -1,5 +1,5 @@
 <template>
-  <main class="content-home">
+  <main class="content-home col-md-8">
     <section class="slider-container">
       <span>Slider</span>
     </section>

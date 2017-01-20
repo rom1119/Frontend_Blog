@@ -1,5 +1,5 @@
 <template>
-  <section class="register-page">
+  <section class="register-page col-md-8">
       <register-form></register-form>
   </section>
 </template>

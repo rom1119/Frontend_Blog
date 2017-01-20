@@ -1,7 +1,5 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <form class="col-xs-offset-3 col-xs-6">
+      <form class="col-md-8">
         <div class="form-group has-success">
           <label class="control-label" for="inputSuccess1">Email</label>
           <input v-model="email" type="text" name="email" class="form-control" id="inputSuccess1" aria-describedby="helpBlock2">
@@ -22,8 +20,6 @@
           </div>
         </div>
       </form>
-    </div>
-  </div>
 </template>
 
 <script>

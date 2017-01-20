@@ -1,3 +1,5 @@
+$padding-footer-li: 5px 0 0 5px;
+
 .main-footer {
 	width: 100%;
 	background-color: #040303;
@@ -62,7 +64,7 @@
 	}
 	.copyright {
 		border-top: 1px solid #777777;
-		padding: 20px 0;
+		padding: 10px 0;
 		margin-top: 20px;
 		span {
 			color: #aaaaaa;
