@@ -1,0 +1,44 @@
+// ============================ Global ===============================
+$body-background: #F0F0F0;
+
+// ============================ Header ===============================
+
+
+
+
+// ============================ Main ===============================
+
+// ============================ Sidebar ===============================
+
+
+$sidebar-widget-background: #CDCDCD;
+$sidebar-widget-boxshadow: #777777;
+$sidebar-widget-color: #3C3C3C;
+
+
+$widget-sidebar-props: (
+	background-color: $sidebar-widget-background,
+	box-shadow: 3px 3px 3px 0px $sidebar-widget-boxshadow,
+	border-radius: 15px,
+	padding: 25px 15px,
+	margin-bottom: 30px
+	);
+
+$widget-sidebar-header: (
+		color: $sidebar-widget-color,
+		font-size: 1.5em,
+		font-family: $perspective-sansbold,
+		margin-bottom: 10px
+	);
+
+$widget-sidebar-tag: (
+	
+	display: inline-block,
+	margin: 5px 5px 0 0
+	
+		);
+
+
+// ============================ Footer ===============================
+
+$footer-background: #2B2B2B;

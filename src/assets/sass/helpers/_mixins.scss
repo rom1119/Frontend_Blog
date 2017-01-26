@@ -1,16 +1,22 @@
 $footer-head-font: (
 	font-family: $caviar-dreamsbold,
  	font-size: 1.6em,
-	color: #ffffff,
+	color: #cccccc,
 	font-weight: normal
 	 );
 
 $footer-form-placeholder: (color: #aaaaaa, opacity: 1);
+$sidebar-form-placeholder: (color: #dddddd, opacity: 1);
+
+body {
+		background-color: $body-background;
+}
 	
-@mixin label-form-footer {
+@mixin label-form-footer 
+{
 	legend {
 		span {
-			color: #ffffff;
+			color: #cccccc;
 			font-size: 1.1em;
 		}
 		margin: 10px 0;
@@ -36,19 +42,27 @@ $footer-form-placeholder: (color: #aaaaaa, opacity: 1);
 
 }
 
-
-
-.input-form-footer {
+@mixin input-form($background-color: #0F0F0F) {
 	width: 100%;
 	padding: 10px;
-	background-color: #0F0B0B;
-	color: #bbbbbb;
-	@include placeholder($footer-form-placeholder);
+	background-color: $background-color;
+	color: adjust-lightness($background-color, 90%);
 	&:focus {
 		outline: none;
-		box-shadow: 0px 0px 5px #cccccc;
+		box-shadow: 0px 0px 5px adjust-lightness($background-color, 100%);
 	}
-	border: 2px solid #888888;
+	border: 2px solid adjust-lightness($background-color, 50%);
+}
+
+.input-form-sidebar {
+	@include input-form(#898989);
+	@include placeholder($sidebar-form-placeholder);
+}
+
+.input-form-footer {
+	@include input-form(#0F0F0F);
+	@include placeholder($footer-form-placeholder);
+
 }
 
 .link-footer {

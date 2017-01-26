@@ -1,5 +1,10 @@
 <template>
-  <section class="tags-cloud">
+  <section class="tags-cloud-widget">
+    <header class="tags-header">
+      <h3>
+        Tagi
+      </h3>
+    </header>
     <ul class="tags-list">
       <li class="tags-item">
         <a href="">Front-end</a>

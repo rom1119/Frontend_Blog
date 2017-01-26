@@ -29,6 +29,9 @@ export default {
   props: {
 
   },
+  methods: {
+
+  },
   components: {
     
   }

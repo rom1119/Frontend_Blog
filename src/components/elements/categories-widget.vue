@@ -1,5 +1,10 @@
 <template>
   <section class="categories-widget">
+    <header class="categories-widget-header">
+      <h3>
+        Kategorie
+      </h3>
+    </header>
     <ul class="main-categories-widget">
       <li class="main-categories-item">
         <router-link to="/">Programowanie</router-link>

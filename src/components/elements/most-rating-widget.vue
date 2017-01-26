@@ -1,11 +1,14 @@
 <template>
   <section class="most-rating-widget">
+    <header class="most-rating-header">
+      <h3>
+        Najlepiej oceniane
+      </h3>
+    </header>
     <ul class="most-rating-list container">
       <li class="most-rating-item row">
         <div class="post-icon col-md-2">
-          <a href="">
             <i class="icon fa fa-facebook"></i>
-          </a>
         </div>
         <div class="post-info col-md-10">
           <div class="post-title">
@@ -20,9 +23,7 @@
       </li>
       <li class="most-rating-item row">
         <div class="post-icon col-md-2">
-          <a href="">
             <i class="icon fa fa-facebook"></i>
-          </a>
         </div>
         <div class="post-info col-md-10">
           <div class="post-title">
@@ -35,9 +36,7 @@
       </li>
       <li class="most-rating-item row">
         <div class="post-icon col-md-2">
-          <a href="">
             <i class="icon fa fa-facebook"></i>
-          </a>
         </div>
         <div class="post-info col-md-10">
           <div class="post-title">

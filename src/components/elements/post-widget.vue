@@ -1,5 +1,5 @@
 <template>
-  <article class="post-item">
+  <article class="post-item col-md-4">
     <div class="post-content">
       <span class="fa fa-google"></span>
       <div class="post-category">

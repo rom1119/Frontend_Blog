@@ -4,7 +4,10 @@
       <span>Slider</span>
     </section>
     <section class="latest-posts">
-      <post-widget v-for="i in 10"></post-widget>
+      <div class="row">
+        <post-widget v-for="i in 10"></post-widget>
+      </div>
+      
     </section>
     <section class="most-rating-article">
       
