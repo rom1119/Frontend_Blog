@@ -54,6 +54,28 @@ body {
 	border: 2px solid adjust-lightness($background-color, 50%);
 }
 
+@mixin btn-form($color) {
+	height: 100%;
+	background-image: linear-gradient(to bottom , $color, adjust-lightness($color, -30%));
+	color: adjust-lightness($color, 50%);
+	outline: none;
+	border: 0;
+	&:active {
+		background-image: linear-gradient(to bottom , adjust-lightness($color, -30%), $color);
+		text-shadow: 1px 1px 0px adjust-lightness($color, 50%);
+		color: adjust-lightness($color, 40%);
+	}
+}
+
+@mixin header-section-content() {
+	h3 {
+		font-family: $perspective-sansregular;
+		font-size: 2em;
+		font-weight: bold;
+		color: $body-background;
+	}
+}
+
 .input-form-sidebar {
 	@include input-form(#898989);
 	@include placeholder($sidebar-form-placeholder);
@@ -81,4 +103,13 @@ body {
 .header-section-footer {
 	padding: 10px 0;
 	@include add-props($footer-head-font);
+}
+
+.header-section-main {
+	padding: 20px 0;
+	text-align: center;
+	background-color: adjust-lightness($body-background, -25%);
+	box-shadow: $sidebar-widget-boxshadow;
+	margin: 20px 0;
+	@include header-section-content();
 }

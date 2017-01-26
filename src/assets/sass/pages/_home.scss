@@ -1,0 +1,17 @@
+.content-home {
+	.slider-container {
+
+	}
+
+	.latest-posts {
+		header.latest-posts-header {
+			@extend .header-section-main;
+		}
+	}
+
+	.most-rating-posts {
+		header.most-rating-posts-header {
+			@extend .header-section-main;
+		}
+	}
+}

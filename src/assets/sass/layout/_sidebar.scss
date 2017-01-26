@@ -1,6 +1,6 @@
 aside.sidebar {
 	min-height: 100%;
-	padding-top: 30px;
+	padding-top: 20px;
 	.search-widget {
 		@include add-props($widget-sidebar-props);
 		p {
@@ -27,16 +27,7 @@ aside.sidebar {
 				height: 100%;
 				display: inline-block;
 				button.button-search {
-					height: 100%;
-					background-image: linear-gradient(to bottom , $sidebar-widget-background, #999999);
-					color: $sidebar-widget-color;
-					outline: none;
-					border: 0;
-					&:active {
-						background-image: linear-gradient(to bottom , #999999, $sidebar-widget-background);
-						text-shadow: 1px 1px 1px #dddddd;
-						color: $sidebar-widget-color - #222222;
-					}
+					@include btn-form($sidebar-widget-background);
 				}
 			}
 		}
@@ -123,8 +114,14 @@ aside.sidebar {
 	.tags-cloud-widget {
 		@include add-props($widget-sidebar-props);
 		.tags-header {
+			span {
+				display: inline-block;
+				font-size: 1.5em;
+			}
 			h3 {
 				@include add-props($widget-sidebar-header);
+				display: inline-block;
+				padding-left: 10px;
 			}
 		}
 		ul.tags-list {

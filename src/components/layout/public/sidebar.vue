@@ -11,7 +11,7 @@
 
 import searchWidget from '../../elements/search-widget.vue'
 import tagsWidget from '../../elements/tags-widget.vue'
-import mostRating from '../../elements/most-rating-widget.vue'
+import mostRating from '../../elements/post-sidebar-widget.vue'
 import categoriesWidget from '../../elements/categories-widget.vue'
 
 export default {

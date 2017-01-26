@@ -1,16 +1,26 @@
 <template>
   <main class="content-home col-md-8">
-    <section class="slider-container">
-      <span>Slider</span>
-    </section>
+   <!--  <section class="slider" data-gallery="slider">
+      
+    </section> -->
     <section class="latest-posts">
+      <header class="latest-posts-header">
+        <h3>
+          Najnowsze wpisy
+        </h2>
+      </header>
       <div class="row">
-        <post-widget v-for="i in 10"></post-widget>
+        <post-widget v-for="i in 6"></post-widget>
       </div>
       
     </section>
-    <section class="most-rating-article">
-      
+    <section class="most-rating-posts">
+      <header class="most-rating-posts-header">
+        <h3>
+          Najwyżej oceniane wpisy
+        </h2>
+      </header>
+      <post-widget v-for="i in 6"></post-widget>
     </section>
 
 
@@ -20,7 +30,7 @@
 
 <script>
 
-import post from '../elements/post-widget'
+import post from '../elements/post-content-widget'
 
 
 

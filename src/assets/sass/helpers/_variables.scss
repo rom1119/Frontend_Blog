@@ -12,13 +12,13 @@ $body-background: #F0F0F0;
 
 
 $sidebar-widget-background: #CDCDCD;
-$sidebar-widget-boxshadow: #777777;
+$sidebar-widget-boxshadow: 3px 3px 3px 0px #777777;
 $sidebar-widget-color: #3C3C3C;
 
 
 $widget-sidebar-props: (
 	background-color: $sidebar-widget-background,
-	box-shadow: 3px 3px 3px 0px $sidebar-widget-boxshadow,
+	box-shadow: $sidebar-widget-boxshadow,
 	border-radius: 15px,
 	padding: 25px 15px,
 	margin-bottom: 30px

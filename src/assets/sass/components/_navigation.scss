@@ -1,8 +1,14 @@
 .navigation-site {
 	text-align: center;
-	background-color: #111111;
-	margin-bottom: 0;
-	border: 0;
+	background-color: adjust-lightness($footer-background, 40%);
+	margin-bottom: 20px;
+	border-radius: 0;
+	border: {
+		top: 1px solid adjust-lightness($body-background, -25%);
+		bottom: 1px solid adjust-lightness($body-background, -25%);
+		left: 0;
+		right: 0;
+	}
 	.navigation-site-header {
 		display: none;
 		text-align: right;
@@ -26,6 +32,7 @@
 
 .navigation-site {
 	#nav-main-page {
+		border: 0;
 
 		ul.nav-main  {
 			position: relative; 
@@ -33,7 +40,7 @@
 			right: 50%;
 			transform: translate(-50%, 0%);
 			list-style-type: none;
-			margin: 10px 0;
+			height: 100%;
 		}
 	}
 }
@@ -58,10 +65,10 @@
 				text-decoration: none;
 				color: #CBCFE5;
 				display: block;
-				padding: 10px 20px;
+				padding: 20px 20px;
 				background-color: transparent;
 				text-transform: uppercase;
-				font-family: perspective_sansbold;
+				font-family: $perspective-sansregular;
 				letter-spacing: .1em;
 				font-size: 1.1em;
 				border: 1px solid transparent;
@@ -76,8 +83,8 @@
 		li {
 			&:hover {
 				a {
-					color: #EEEEEE;
-					border: 1px solid rgba(#AAADBF, 0.4);
+					display: block;
+					height: 100%;
 				}
 			}
 		}

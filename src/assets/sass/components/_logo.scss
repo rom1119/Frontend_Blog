@@ -2,7 +2,7 @@ $background-header: url(../img/code.jpg) no-repeat center center;
 
 .logo {
 	text-align: center;
-	background: $background-header;			
+	background: adjust-lightness($footer-background, 70%);			
 	background-size: cover;
 	width: 100%;
 	padding: 30px 0;
@@ -18,7 +18,7 @@ $background-header: url(../img/code.jpg) no-repeat center center;
 .logo {
 	h1.logo-title {
 		a {
-			color: #CBCFE5;
+			color: $sidebar-widget-color + #444444;
 			text: {
 				decoration: none;
 				transform: uppercase;

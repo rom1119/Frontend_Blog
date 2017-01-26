@@ -1,6 +1,7 @@
 <template>
   <section class="tags-cloud-widget">
     <header class="tags-header">
+      <span class="fa fa-tags"></span>
       <h3>
         Tagi
       </h3>
