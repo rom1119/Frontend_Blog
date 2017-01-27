@@ -5,7 +5,7 @@
       <div class="post-mini-info">
         <div class="post-mini-title">
           <h2>
-            <router-link to="">This is title of post</router-link>
+            <router-link to="post">This is title of post</router-link>
           </h2>
         </div>
         <div class="post-mini-category">

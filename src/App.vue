@@ -37,8 +37,8 @@ export default {
 </script>
 
 <style src="./assets/bootstrap/css/bootstrap.css"  lang="css"></style>
-<style src="./assets/bootstrap/scss/bootstrap-reboot.scss"  lang="scss"></style>
-<style src="./assets/bootstrap/scss/bootstrap-grid.scss"  lang="scss"></style>
+<!-- <style src="./assets/bootstrap/scss/bootstrap-reboot.scss"  lang="scss"></style> -->
+<!-- <style src="./assets/bootstrap/scss/bootstrap-grid.scss"  lang="scss"></style> -->
 <style src="./assets/font-awesome-4.5.0/scss/font-awesome.scss"  lang="scss"></style>
 <style src="./assets/sass/main.scss"  lang="scss"></style>
 <style src="./assets/slider/style.css"  lang="css"></style>

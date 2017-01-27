@@ -5,7 +5,7 @@
         Najlepiej oceniane
       </h3>
     </header>
-    <ul class="most-rating-list container">
+    <ul class="most-rating-list">
       <li class="most-rating-item row">
         <div class="post-icon col-md-2">
             <i class="icon fa fa-facebook"></i>

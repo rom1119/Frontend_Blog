@@ -6,10 +6,22 @@ $footer-head-font: (
 	 );
 
 $footer-form-placeholder: (color: #aaaaaa, opacity: 1);
-$sidebar-form-placeholder: (color: #dddddd, opacity: 1);
+$sidebar-form-placeholder: (color: #cccccc, opacity: 1);
+$register-form-placeholder: (color: #ffffff, opacity: 1);
 
 body {
 		background-color: $body-background;
+}
+
+@mixin title-form($type) {
+	.#{$type}-form-header {
+			text-align: center;
+			padding: 20px 0;
+			border-bottom: 1px solid #B3B3B3;
+			h4 {
+				font-size: 2em;
+			}
+		}
 }
 	
 @mixin label-form-footer 
@@ -46,23 +58,23 @@ body {
 	width: 100%;
 	padding: 10px;
 	background-color: $background-color;
-	color: adjust-lightness($background-color, 90%);
+	color: adjust-lightness($background-color, 100%);
 	&:focus {
 		outline: none;
-		box-shadow: 0px 0px 5px adjust-lightness($background-color, 100%);
+		box-shadow: inset 0px 0px 10px adjust-lightness($background-color, 100%);
 	}
 	border: 2px solid adjust-lightness($background-color, 50%);
 }
 
 @mixin btn-form($color) {
 	height: 100%;
+	padding: 0 10px;
 	background-image: linear-gradient(to bottom , $color, adjust-lightness($color, -30%));
 	color: adjust-lightness($color, 50%);
 	outline: none;
 	border: 0;
 	&:active {
 		background-image: linear-gradient(to bottom , adjust-lightness($color, -30%), $color);
-		text-shadow: 1px 1px 0px adjust-lightness($color, 50%);
 		color: adjust-lightness($color, 40%);
 	}
 }
@@ -76,9 +88,21 @@ body {
 	}
 }
 
+.label-form {
+	padding: 5px 0;	
+	text-align: center;
+	font-family: $lato-medium;
+	font-size: 1em;
+}
+
 .input-form-sidebar {
 	@include input-form(#898989);
 	@include placeholder($sidebar-form-placeholder);
+}
+
+.input-form-register {
+	@include input-form(#999999);
+	@include placeholder($register-form-placeholder);
 }
 
 .input-form-footer {

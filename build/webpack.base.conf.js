@@ -71,10 +71,10 @@ module.exports = {
         }
       },
       {
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        test: /\.(woff2?|eot|ttf|otf|svg)(\?.*)?$/,
         loader: 'url',
         query: {
-          limit: 100000,
+          limit: 100,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       }

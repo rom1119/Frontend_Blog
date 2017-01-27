@@ -1,7 +1,7 @@
 <template>
-  <section class="register-page col-md-8">
+  <main class="register-page col-md-8">
       <register-form></register-form>
-  </section>
+  </main>
 </template>
 
 <script>

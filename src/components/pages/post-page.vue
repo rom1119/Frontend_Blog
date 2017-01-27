@@ -1,14 +1,11 @@
 <template>
-  <div class="container">
-    <div class="row asd">
-  <!--      <post v-for="x in 10" first="sahdihias"></post> -->
-  <h1>  Post</h1>
-    </div>
-  </div>
+  <main class="full-post-page col-md-8">
+    <full-post></full-post>
+  </main>
 </template>
 
 <script>
-
+import fullPost from '../layout/public/post.vue'
 
 export default {
   name: 'post-page',
@@ -21,7 +18,7 @@ export default {
 
   },
   components: {
-
+    'full-post': fullPost
   }
 }
 </script>

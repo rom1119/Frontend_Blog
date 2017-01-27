@@ -1,0 +1,257 @@
+main.register-page {
+	form#register-form {
+		
+		@include title-form('register');
+		#username-element-form {
+			padding: 10px 0;
+			legend {
+				padding: 10px;
+				text-align: center;
+				border: {
+					top: 1px solid #B3B3B3;
+					bottom: 1px solid #B3B3B3;
+				}
+				span {
+					font-weight: bold;
+					font-size: 1.1em;
+					text-transform: uppercase;
+				}
+			}
+
+			.register-username {
+				p {
+					@extend .label-form;
+				}
+				input#input-username {
+					@extend .input-form-register;
+				}
+			}
+
+			.has-user-error {
+
+			}
+		}
+		#name-element-form {
+			padding: 10px 0;
+			fieldset {
+				legend {
+					padding: 5px;
+					text-align: center;
+					border: {
+						top: 1px solid #B3B3B3;
+						bottom: 1px solid #B3B3B3;
+					}
+					span {
+						font-weight: bold;
+						font-size: 1.1em;
+						text-transform: uppercase;
+					}
+				}
+
+				.register-firstName {
+					p {
+						@extend .label-form;
+					}
+					input#input-firstname {
+						@extend .input-form-register;
+					}
+				}
+
+				.register-lastName {
+					p {
+						@extend .label-form;
+					}
+					input#input-lastname {
+						@extend .input-form-register;
+					}
+				}
+			}
+		}
+
+		
+
+		#password-element-form {
+			padding: 10px 0;
+			fieldset {
+				legend {
+					padding: 5px;
+					text-align: center;
+					border: {
+						top: 1px solid #B3B3B3;
+						bottom: 1px solid #B3B3B3;
+					}
+					span {
+						font-weight: bold;
+						font-size: 1.1em;
+						text-transform: uppercase;
+					}
+				}
+
+				.register-password {
+					p {
+						@extend .label-form;
+					}
+					input#input-password {
+						@extend .input-form-register;
+					}
+				}
+
+				.register-password {
+					p {
+						@extend .label-form;	
+					}
+					input#input-password-conf {
+						@extend .input-form-register;
+					}
+				}
+
+				.password-error {
+
+				}
+			}
+		}
+
+		#birthday-element-form {
+			padding: 10px 0;
+			fieldset {
+				legend {
+					padding: 5px;
+					text-align: center;
+					border: {
+						top: 1px solid #B3B3B3;
+						bottom: 1px solid #B3B3B3;
+					}
+					span.label-element-form {
+						font-weight: bold;
+						font-size: 1.1em;
+						text-transform: uppercase;
+					}
+				}
+
+				.register-year {
+					p {
+						@extend .label-form;	
+					}
+					input#input-birthday-year {
+						@extend .input-form-register;
+					}
+				}
+
+				.register-month {
+					p {
+						@extend .label-form;	
+					}
+					select#input-birthday-month {
+						@extend .input-form-register;
+					}
+				}
+
+				.register-day {
+					p {
+						@extend .label-form;	
+					}
+					input#input-birthday-day {
+						@extend .input-form-register;
+					}
+				}
+
+				.birthday-error {
+
+				}
+			}
+		}
+
+		#gender-element-form {
+			padding: 10px 0;
+			legend {
+				padding: 5px;
+				text-align: center;
+				border: {
+					top: 1px solid #B3B3B3;
+					bottom: 1px solid #B3B3B3;
+				}
+				span {
+					font-weight: bold;
+					font-size: 1.1em;
+					text-transform: uppercase;
+				}
+			}
+
+			.register-gender {
+				select#input-gender {
+					@extend .input-form-register;
+					option {
+
+					}
+				}
+			}
+
+			.gender-error {
+
+			}
+		}
+		
+
+		#contact-element-form {
+			padding: 10px 0;
+			fieldset {
+				legend {
+					padding: 5px;
+					text-align: center;
+					border: {
+						top: 1px solid #B3B3B3;
+						bottom: 1px solid #B3B3B3;
+					}
+					span {
+						font-weight: bold;
+						font-size: 1.1em;
+						text-transform: uppercase;
+					}
+				}
+
+				.register-phone {
+					p {
+						@extend .label-form;	
+					}
+					input#input-phone {
+						@extend .input-form-register;
+					}
+				}
+
+				.register-email {
+					p {
+						@extend .label-form;	
+					}
+					input#input-email {
+						@extend .input-form-register;
+					}
+				}
+			}
+		}
+		
+		// #country-element-form {
+		// 	padding: 20px 0;
+		// 	legend {
+		// 		span {
+
+		// 		}
+		// 	}
+
+		// 	.register-country {
+		// 		select#input-country {
+
+		// 		}
+		// 	}
+		// }
+
+		#register-element-form {
+			padding: 10px 0;
+			.register-send {
+				height: 45px;
+				input#input-send {
+					@include btn-form(#cccccc);
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,49 @@
+main.login-page {
+	form#login-form {
+		@include title-form('login');
+		#username-element-form {
+
+			.login-form-username {
+				p {
+					@extend .label-form;
+					text-align: left;
+				}
+				#input-username {
+					@extend .input-form-register;
+				}
+			}
+		}
+
+		#password-element-form {
+			
+			.login-form-password {
+				p {
+					@extend .label-form;
+					text-align: left;
+				}
+				#input-password {
+					@extend .input-form-register;
+				}
+			}
+		}
+
+		#submit-element-form {
+			padding: 20px 0;
+			.login-form-password {
+				height: 45px;
+
+				#input-send {
+					@include btn-form(#cccccc);
+				}
+			}
+
+			.login-error {
+				display: inline-block;
+				padding-left: 50px;
+				span {
+					color: #CD5050;
+				}
+			}
+		}
+	}
+}

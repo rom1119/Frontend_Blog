@@ -1,13 +1,5 @@
 <template>
-  <main class="main-site">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <full-post></full-post>
-        </div>
-      </div>
-    </div>
-  </main>
+  <full-post></full-post>
 </template>
 
 <script>
