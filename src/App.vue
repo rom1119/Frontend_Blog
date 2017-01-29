@@ -1,7 +1,12 @@
 <template>
   <div id="app">
     <header-page></header-page>
-    <div class="container">
+    <section id="strap-info">
+      <div class="logged-as" v-html="loggedAs">
+        
+      </div>
+    </section>  
+    <div class="container">   
       <div class="row">
         <router-view></router-view>
         <sidebar></sidebar>
@@ -20,7 +25,8 @@ export default {
   name: 'App',
   data: function() {
     return {
-      path: window.location.hash
+      path: "window.location.hash",
+      loggedAs : 'Zalogowany jako rom1119'
     }
   },
   methods: {
@@ -39,6 +45,6 @@ export default {
 <style src="./assets/bootstrap/css/bootstrap.css"  lang="css"></style>
 <!-- <style src="./assets/bootstrap/scss/bootstrap-reboot.scss"  lang="scss"></style> -->
 <!-- <style src="./assets/bootstrap/scss/bootstrap-grid.scss"  lang="scss"></style> -->
-<style src="./assets/font-awesome-4.5.0/scss/font-awesome.scss"  lang="scss"></style>
+<style src="./assets/font-awesome-4.7.0/scss/font-awesome.scss"  lang="scss"></style>
 <style src="./assets/sass/main.scss"  lang="scss"></style>
 <style src="./assets/slider/style.css"  lang="css"></style>

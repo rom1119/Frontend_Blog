@@ -1,7 +1,7 @@
 .navigation-site {
-	text-align: center;
+	//text-align: center;
 	background-color: adjust-lightness($footer-background, 40%);
-	margin-bottom: 20px;
+	margin-bottom: 0;
 	border-radius: 0;
 	border: {
 		top: 1px solid adjust-lightness($body-background, -25%);
@@ -33,20 +33,22 @@
 .navigation-site {
 	#nav-main-page {
 		border: 0;
-
+		position: relative;
+		text-align: center;
 		ul.nav-main  {
-			position: relative; 
-			left: 50%;
-			right: 50%;
-			transform: translate(-50%, 0%);
+
+			display: inline-block;
+			float: none;
 			list-style-type: none;
 			height: 100%;
+
 		}
 	}
 }
 
 .navigation-site {
 	ul.nav-main {
+
 		li {
 			@media screen and (max-width: 767px) {
 				display: block;
@@ -65,14 +67,17 @@
 				text-decoration: none;
 				color: #CBCFE5;
 				display: block;
-				padding: 20px 20px;
+				padding: 15px 10px;
 				background-color: transparent;
 				text-transform: uppercase;
 				font-family: $perspective-sansregular;
 				letter-spacing: .1em;
-				font-size: 1.1em;
+				font-size: 1em;
 				border: 1px solid transparent;
 				@include border-radius(); 
+				&:hover {
+					color: #FFFFFF;
+				}
 			}
 		}
 	}
@@ -80,15 +85,15 @@
 
 .navigation-site {
 	ul.nav-main {
+		display: inline-block;
 		li {
-			&:hover {
-				a {
-					display: block;
-					height: 100%;
-				}
+			a {
+				display: block;
+				height: 100%;
 			}
 		}
 	}
+
 }
 
 .nav-open {

@@ -1,6 +1,13 @@
 <template>
   <main class="login-page col-md-8">
-    <login-form></login-form>
+    <login-form @submit.prevent="login"></login-form>
+    <div class="register">
+      <p>
+        Jeśli nie masz jeszcze konta 
+        <router-link to="register">załóż konto</router-link>
+         aby móc dodawac posty 
+      </p>
+    </div>
   </main>
 </template>
 
@@ -22,7 +29,7 @@ export default {
     'login-form': loginForm
   },
   methods: {
-    ale: function() {
+    login: function() {
       this.$http.post('/auth/local/', {
         email: this.email,
         password: this.password,

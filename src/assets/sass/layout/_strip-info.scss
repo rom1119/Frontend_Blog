@@ -1,0 +1,11 @@
+section#strap-info {
+	height: 20px;
+	position: relative;
+	background-color: #DFDFDF;
+	.logged-as {
+		color: #848795;
+		text-transform: uppercase;
+		position: absolute;
+		right: 0;
+	}
+}

@@ -34,19 +34,7 @@ main.register-page {
 		#name-element-form {
 			padding: 10px 0;
 			fieldset {
-				legend {
-					padding: 5px;
-					text-align: center;
-					border: {
-						top: 1px solid #B3B3B3;
-						bottom: 1px solid #B3B3B3;
-					}
-					span {
-						font-weight: bold;
-						font-size: 1.1em;
-						text-transform: uppercase;
-					}
-				}
+				@include head-input();
 
 				.register-firstName {
 					p {
@@ -73,19 +61,7 @@ main.register-page {
 		#password-element-form {
 			padding: 10px 0;
 			fieldset {
-				legend {
-					padding: 5px;
-					text-align: center;
-					border: {
-						top: 1px solid #B3B3B3;
-						bottom: 1px solid #B3B3B3;
-					}
-					span {
-						font-weight: bold;
-						font-size: 1.1em;
-						text-transform: uppercase;
-					}
-				}
+				@include head-input();
 
 				.register-password {
 					p {
@@ -195,19 +171,7 @@ main.register-page {
 		#contact-element-form {
 			padding: 10px 0;
 			fieldset {
-				legend {
-					padding: 5px;
-					text-align: center;
-					border: {
-						top: 1px solid #B3B3B3;
-						bottom: 1px solid #B3B3B3;
-					}
-					span {
-						font-weight: bold;
-						font-size: 1.1em;
-						text-transform: uppercase;
-					}
-				}
+				@include head-input();
 
 				.register-phone {
 					p {

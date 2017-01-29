@@ -1,0 +1,33 @@
+@mixin header-section-content() {
+	h3 {
+		font-family: $perspective-sansregular;
+		font-size: 2em;
+		font-weight: bold;
+		color: $body-background;
+	}
+}
+
+@mixin title-form($type) {
+	.#{$type}-form-header {
+			text-align: center;
+			padding: 20px 0;
+			border-bottom: 1px solid #B3B3B3;
+			h4 {
+				font-size: 2em;
+			}
+		}
+}
+
+.header-section-footer {
+	padding: 10px 0;
+	@include add-props($footer-head-font);
+}
+
+.header-section-main {
+	padding: 20px 0;
+	text-align: center;
+	background-color: adjust-lightness($body-background, -25%);
+	box-shadow: $sidebar-widget-boxshadow;
+	margin: 20px 0;
+	@include header-section-content();
+}

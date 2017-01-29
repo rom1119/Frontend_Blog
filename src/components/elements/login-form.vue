@@ -1,5 +1,5 @@
 <template>
-  <form accept-charset="utf-8" id="login-form" action="" method="POST">
+  <form accept-charset="utf-8" @submit.prevent="login" id="login-form" action="" method="POST">
     <div class="login-form-header">
       <h4>
         Logowanie
@@ -14,7 +14,7 @@
     <div class="form-element row" id="password-element-form">
       <label for="" class="login-form-password  col-sm-8 col-xs-12">
         <p>Hasło</p>
-        <input type="text" name="_password" id="input-password" min="6" required="true">
+        <input type="password" name="_password" id="input-password" min="6" required="true">
       </label>
 
     </div>
@@ -45,7 +45,7 @@ export default {
     
   },
   methods: {
-    ale: function() {
+    login: function() {
       this.$http.post('/auth/local/', {
         email: this.email,
         password: this.password,

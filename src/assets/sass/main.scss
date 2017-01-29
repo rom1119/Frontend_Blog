@@ -19,7 +19,8 @@
 @import "components/logo";
 @import "components/navigation";
 @import "components/slider";
-@import "components/post-content-widget";
+@import "components/headings";
+@import "components/links";
 
 // // =========== layout ================
 
@@ -27,6 +28,10 @@
 @import "layout/content";
 @import "layout/sidebar";
 @import "layout/footer";
+@import "layout/post-content-widget";
+@import "layout/comment-post-form";
+@import "layout/comments-area";
+@import "layout/strip-info";
 
 // // =========== pages ================
 

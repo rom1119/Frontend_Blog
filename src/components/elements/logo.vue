@@ -6,7 +6,7 @@
       </a>
     </h1>
     <h2 class="logo-desc">
-      Blog o front-endzie i nie tylko
+      Polskie blogowisko programistyczne
     </h2>
   </div>
 </template>

@@ -9,7 +9,7 @@
     <div class="collapse navbar-collapse" id="nav-main-page">
       <ul class="nav navbar-nav nav-main">
         <li>
-          <router-link to="/">Home</router-link>
+          <router-link to="/">Strona Główna</router-link>
         </li>
         <li>
           <router-link to="posts">Posts</router-link>
@@ -72,10 +72,10 @@
           </ul> -->
         </li>
         <li>
-          <router-link to="login">Login</router-link>
+          <router-link to="login">Zaloguj</router-link>
         </li>
         <li>
-          <router-link to="register">Register</router-link>
+          <router-link to="logout">Wyloguj się</router-link>
         </li>
       </ul>
     </div>

@@ -1,0 +1,86 @@
+@mixin form-comment($type) {
+	form##{$type}-form {
+		padding: 10px 0;
+		margin: 10px 0;
+		.#{$type}-form-header {
+			padding: 10px;
+			h4 {
+				text-align: center;
+				font-family: $perspective-sansregular;
+				font-size: 1.6em;
+			}
+		}
+
+		#text-element-form {
+			@include head-input();
+
+			.#{$type}-text {
+				width: 100%;
+				padding: 10px;
+				p {
+					@extend .label-form;
+					text-align: left;
+				}
+				#input-#{$type}-text {
+					@extend .input-comment;
+					max-width: 100%;
+				}
+			}
+		}
+
+		#email-element-form {
+			@include head-input();
+
+			.#{$type}-email {
+				width: 100%;
+				padding: 10px;
+				p {
+					@extend .label-form;
+					text-align: left;
+				}
+
+				#input-comment-email {
+					@extend .input-comment;
+				}
+			}
+		}
+
+		#name-element-form {
+			@include head-input();
+
+			.#{$type}-name {
+				width: 100%;
+				padding: 10px;
+				p {
+					@extend .label-form;
+					text-align: left;
+				}
+				#input-comment-name {
+					@extend .input-comment;
+				}
+			}
+		}
+
+		#send-comment-element-form {
+			height: 45px;
+			display: inline-block;
+			.#{$type}-send {
+				padding-left: 10px;
+				height: 100%;
+				#input-#{$type}-send {
+					@include btn-comment(#E3E3E3);
+				}
+			}
+
+			
+		}
+
+		.error-#{$type}-form {
+			display: inline-block;
+			padding: 20px;
+			span {
+				color: #D04848;
+			}
+		}
+	}
+}
