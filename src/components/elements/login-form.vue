@@ -1,5 +1,5 @@
 <template>
-  <form accept-charset="utf-8" id="login-form" @submit.prevent="login()"  method="POST">
+  <form accept-charset="utf-8" id="login-form" action=""  method="POST">
     <div class="login-form-header">
       <h4>
         Logowanie
@@ -20,9 +20,8 @@
     </div>
     <div class="form-element" id="submit-element-form">
       <label for="" class="login-form-password">
-        <input type="submit" id="input-send" value="Zaloguj" required="true">
+        <input type="submit" @click.prevent="login" id="input-send" value="Zaloguj">
       </label>
-      <button @click="verify">Verify</button>
       <div class="login-error">
         <span>{{ msg }}</span>
       </div>
@@ -32,7 +31,7 @@
 </template>
 
 <script>
-//import jwt_decode from 'jwt-decode';
+import jwt_decode from 'jwt-decode';
 
 export default {
   name: 'login-page',
@@ -42,7 +41,9 @@ export default {
         email: '',
         password: ''
       },
-      msg: 'Login lub hasło jest niepoprawne',
+      data: {},
+      token: '',
+      msg: '',
       csrf: document.cookie.slice(document.cookie.indexOf("XSRF-TOKEN=") + 11)
       
     }
@@ -62,7 +63,10 @@ export default {
       }
       
      ).then(response => {
-      this.msg = response.body.message || response.body;
+        var res = JSON.parse(response.body);
+        this.token = res.token;
+        this.data = jwt_decode(this.token);
+        this.msg = this.data;
         console.log(response);
       }, 
       error => {

@@ -44,13 +44,23 @@ class Authentication implements AuthenticationInterface
 				'website' => $user->getWebsite(),
 				'posts' => $user->getPosts()
 				);
-			JWT::$leeway = 60;
-			$token = JWT::encode($payload, $key);
+			$token = JWT::encode($payload, $key, 'HS512');
 			$response['token'] = $token;
 			$response['message'] = 'Zostałeś zalogowany';
 			return json_encode($response);
 		}
 
 		return 'Podałeś nieprawidłowe dane ';
+	}
+
+	public function isValidToken($token)
+	{
+		$key = 'secret_key';
+		try {
+			return is_object(JWT::decode($token, $key, array('HS512')));
+		} catch (\Exception $e) {
+			return false;
+		}
+		
 	}
 }

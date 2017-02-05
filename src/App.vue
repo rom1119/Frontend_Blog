@@ -31,6 +31,11 @@ export default {
   methods: {
     isActive: function(url) {
       return window.location.hash == url;
+    },
+    someMethod () {
+      let lsValue = this.$localStorage.get('someObject')
+      this.$localStorage.set('someBoolean', true)
+      this.$localStorage.remove('stringOne')
     }
   },
   components: {
@@ -41,9 +46,9 @@ export default {
 }
 </script>
 
-<style src="./assets/bootstrap/css/bootstrap.css"  lang="css"></style>
 <!-- <style src="./assets/bootstrap/scss/bootstrap-reboot.scss"  lang="scss"></style> -->
 <!-- <style src="./assets/bootstrap/scss/bootstrap-grid.scss"  lang="scss"></style> -->
+<style src="./assets/bootstrap/css/bootstrap.css"  lang="css"></style>
 <style src="./assets/font-awesome-4.7.0/scss/font-awesome.scss"  lang="scss"></style>
 <style src="./assets/sass/main.scss"  lang="scss"></style>
 <style src="./assets/slider/style.css"  lang="css"></style>

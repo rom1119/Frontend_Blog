@@ -14,6 +14,4 @@ $collection->add('login', new Route('/auth', array(
     ));
 
 
-
-
 return $collection;

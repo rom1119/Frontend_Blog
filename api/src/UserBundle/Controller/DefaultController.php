@@ -40,4 +40,13 @@ class DefaultController extends Controller
 
         return new JsonResponse($response);
     }
+
+    public function verifyAction(Request $request)
+    {
+        $auth = new Authentication(new UserModel($this->getDoctrine()));
+        $response = (string)$auth->isValidToken($this->data['token']);
+
+        return new Response($response);
+    }
+
 }

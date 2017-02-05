@@ -32,8 +32,6 @@ class User implements AdvancedUserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
-     */
-    /**
      * @Assert\NotBlank(message = "Musisz podac imie")
      */
     private $name;

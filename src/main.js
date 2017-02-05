@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Bootstrap from 'bootstrap'
 import VueRouter from 'vue-router'
-import Resource from 'vue-resource'
+import VueResource from 'vue-resource'
+import VueLocalStorage from 'vue-localstorage'
 import App from './App'
 import Post from './components/pages/post-page'
 import Login from './components/pages/login-page'
@@ -16,7 +17,8 @@ import scripts from './assets/js/script.js'
 // import Category from './Category'
 
 Vue.use(VueRouter)
-Vue.use(Resource)
+Vue.use(VueResource)
+Vue.use(VueLocalStorage)
 
 /* eslint-disable no-new */
 
@@ -42,5 +44,27 @@ var router = new VueRouter({
 })
 new Vue({
 	el: '#app',
-  router: router
+  router: router,
+  localStorage: {
+    someObject: {
+      type: Object,
+      default: {
+        hello: 'world'
+      }
+    },
+    someNumber: {
+      type: Number,
+    },
+    someBoolean: {
+      type: Boolean
+    },
+    stringOne: '',
+    stringTwo: {
+      type: String,
+      default: 'helloworld!'
+    },
+    stringThree: {
+      default: 'hello'
+    }
+  },
 })
