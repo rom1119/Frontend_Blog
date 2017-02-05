@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<style>
+#div {
+	width: 200px;
+	height: 100px;
+	margin-left: 400px;
+	background: #67DB61;
+	border-radius: 10px 10px 0 0;
+}
+#strzalka {
+	width: 0;
+	height: 0;
+	
+	position: relative;
+	top: 35px;
+	border-left: 15px solid #fff;
+	border-top: 15px solid transparent;
+	border-bottom: 15px solid transparent;
+}
+</style>
+{% endblock %}
+{% block body %}
+<div id="div"><div id="strzalka"></div>{{ session }}</div>
+{% endblock %}
+

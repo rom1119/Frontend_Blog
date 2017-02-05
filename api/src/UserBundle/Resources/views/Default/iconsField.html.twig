@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('font-awesome-4.5.0/css/font-awesome.min.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
+{% endblock %}
+
+{% block body %}
+			&times;
+	           <div id="container">
+			      {{ form_start(form) }}
+			      
+			      	{% for x,item in class %}
+					 <input type="radio" id="form_gender_0" name="form[gender]" value="{{ x }}">
+					<label for="form_gender_0"><i class="{{ item }}"></i> </label>
+					{% endfor %}
+					
+			      {{ form_end(form,{'render_form':false}) }}
+				</div>
+	
+
+	{# block choice_widget_options -%}
+	    {% for group_label, choice in options %}
+	        {%- if choice is iterable -%}
+	            <optgroup label="{{ choice_translation_domain is same as(false) ? group_label : group_label|trans({}, choice_translation_domain) }}">
+	                {% set options = choice %}
+	                {{- block('choice_widget_options') -}}
+	            </optgroup>
+	        {%- else -%}
+	            {% set attr = choice.attr %}
+	            <option value="{{ choice.value }}" {{ block('attributes') }}{% if choice is selectedchoice(value) %} selected="selected"{% endif %}>{{ choice_translation_domain is same as(false) ? choice.label : choice.label|trans({}, choice_translation_domain) }}</option>
+	        {%- endif -%}
+	    {% endfor %}
+	{%- endblock choice_widget_options -%#}
+{% endblock %}

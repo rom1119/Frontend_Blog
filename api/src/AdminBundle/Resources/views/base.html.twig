@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block body %}
+
+            {%- block attr -%}
+    {% for key,value in attr %}
+        {{ key }}="{{ value }}"
+    {% endfor %}
+
+{%- endblock attr -%}
+
+            {% block attributes -%}
+                 {%- for attrname, attrvalue in attr -%}
+                    {{- " " -}}
+                    {%- if attrname in ['placeholder', 'title'] -%}
+                        {{- attrname }}="{{ attrvalue }}"
+                    {%- elseif attrvalue is same as(true) -%}
+                        {{- attrname }}="{{ attrname }}"
+                    {%- elseif attrvalue is not same as(false) -%}
+                        {{- attrname }}="{{ attrvalue }}"
+                    {%- endif -%}
+                 {%- endfor -%}
+            {%- endblock attributes -%}
+
+        {% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

@@ -1,36 +1,37 @@
 <template>
-  <main class="content-home col-md-8">
-   <!--  <section class="slider" data-gallery="slider">
-      
-    </section> -->
-    <section class="latest-posts">
-      <header class="latest-posts-header">
-        <h3>
-          Najnowsze wpisy
-        </h2>
-      </header>
-      <div class="row">
+  <div class="row">
+    <section class="content-home col-md-8">
+     <!--  <section class="slider" data-gallery="slider">
+        
+      </section> -->
+      <section class="latest-posts">
+        <header class="latest-posts-header">
+          <h3>
+            Najnowsze artykuły
+          </h3>
+        </header>
+        <div class="row">
+          <post-widget v-for="i in 6"></post-widget>
+        </div>
+        
+      </section>
+      <section class="most-rating-posts">
+        <header class="most-rating-posts-header">
+          <h3>
+            Najwyżej oceniane artykuły
+          </h3>
+        </header>
         <post-widget v-for="i in 6"></post-widget>
-      </div>
-      
+      </section>  
     </section>
-    <section class="most-rating-posts">
-      <header class="most-rating-posts-header">
-        <h3>
-          Najwyżej oceniane wpisy
-        </h2>
-      </header>
-      <post-widget v-for="i in 6"></post-widget>
-    </section>
-
-
-  </main>
-  
+    <sidebar></sidebar>
+  </div>
 </template>
 
 <script>
 
 import post from '../elements/post-content-widget'
+import sidebar from '../layout/public/sidebar'
 
 
 
@@ -45,7 +46,8 @@ export default {
 
   },
   components: {
-    'post-widget': post
+    'post-widget': post,
+    'sidebar': sidebar
 
   }
 }

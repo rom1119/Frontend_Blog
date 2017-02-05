@@ -1,4 +1,4 @@
-main.register-page {
+section.register-page {
 	form#register-form {
 		
 		@include title-form('register');
@@ -214,6 +214,14 @@ main.register-page {
 				height: 45px;
 				input#input-send {
 					@include btn-form(#cccccc);
+				}
+			}
+
+			.register-error {
+				display: inline-block;
+				padding-left: 50px;
+				span {
+					color: #CD5050;
 				}
 			}
 		}

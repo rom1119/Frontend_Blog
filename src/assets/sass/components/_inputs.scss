@@ -1,6 +1,6 @@
 $footer-form-placeholder: (color: #aaaaaa, opacity: 1);
 $sidebar-form-placeholder: (color: #cccccc, opacity: 1);
-$register-form-placeholder: (color: #ffffff, opacity: 1);
+$register-form-placeholder: (color: #dddddd, opacity: 1);
 $comment-form-placeholder: (color: #eeeeee, opacity: 1);
 
 @mixin placeholder($props) {
@@ -49,7 +49,7 @@ $comment-form-placeholder: (color: #eeeeee, opacity: 1);
 	background-image: linear-gradient(to bottom, #A5A5A5, #C0C0C0, #A5A5A5);
 	color: #ffffff;
 	border: 0;
-	width: 70%;
+	width: 100%;
 	padding: 10px;
 	&:focus {
 		box-shadow: inset 0 0 15px #676767;

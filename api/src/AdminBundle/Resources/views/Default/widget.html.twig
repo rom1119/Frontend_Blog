@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('font-awesome-4.5.0/css/font-awesome.min.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
+{% endblock %}
+
+{% block body %}
+
+	
+<div id="container">
+    {{ form_start(form,{'method': 'POST'}) }}
+    	{{ form_row(form.login) }}
+        {{ form_row(form.email) }}
+    	{{ form_row(form.password) }}
+    	{{ form_row(form.sign) }}
+
+    {{ form_end(form,{'render_rest': true}) }}
+</div>
+
+{% if data %}
+<h1>{{ data }}</h1>
+{% endif %}
+
+        
+	
+		
+
+	{#% block choice_widget_options -%}
+	    {% for group_label, choice in options %}
+	        {%- if choice is iterable -%}
+	            <optgroup label="{{ choice_translation_domain is same as(false) ? group_label : group_label|trans({}, choice_translation_domain) }}">
+	                {% set options = choice %}
+	                {{- block('choice_widget_options') -}}
+	            </optgroup>
+	        {%- else -%}
+	            {% set attr = choice.attr %}
+	            <option value="{{ choice.value }}" {{ block('attributes') }}{% if choice is selectedchoice(value) %} selected="selected"{% endif %}>{{ choice_translation_domain is same as(false) ? choice.label : choice.label|trans({}, choice_translation_domain) }}</option>
+	        {%- endif -%}
+	    {% endfor %}
+	{%- endblock choice_widget_options -%#}
+
+	{#%- block choice_widget_collapsed -%}
+    {%- if required and placeholder is none and not placeholder_in_choices and not multiple -%}
+        {% set required = false %}
+    {%- endif -%}
+    <select {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %}>
+        {%- if placeholder is not none -%}
+            <option value=""{% if required and value is empty %} selected="selected"{% endif %}>{{ placeholder != '' ? (translation_domain is same as(false) ? placeholder : placeholder|trans({}, translation_domain)) }}</option>
+        {%- endif -%}
+        {%- if preferred_choices|length > 0 -%}
+            {% set options = preferred_choices %}
+            {{- block('choice_widget_options') -}}
+            {%- if choices|length > 0 and separator is not none -%}
+                <option disabled="disabled">{{ separator }}</option>
+            {%- endif -%}
+        {%- endif -%}
+        {%- set options = choices -%}
+        {{- block('choice_widget_options') -}}
+    </select>
+{%- endblock choice_widget_collapsed -%#}
+
+{% endblock %}

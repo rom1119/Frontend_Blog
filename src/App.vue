@@ -6,12 +6,11 @@
         
       </div>
     </section>  
-    <div class="container">   
-      <div class="row">
+    <main>   
+      <div class="container">
         <router-view></router-view>
-        <sidebar></sidebar>
       </div>
-    </div>
+    </main>
     <footer-page></footer-page>
   </div>
 </template>

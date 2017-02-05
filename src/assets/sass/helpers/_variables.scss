@@ -34,8 +34,12 @@ $widget-sidebar-header: (
 $widget-sidebar-tag: (
 	
 	display: inline-block,
-	margin: 5px 5px 0 0
-	
+	margin: 5px 5px 0 0,
+	font-family: $perspective-sansregular,
+	font-weight: bold,
+	text-transform: uppercase,
+	font-size: 0.8em,
+	letter-spacing: 2px
 		);
 
 

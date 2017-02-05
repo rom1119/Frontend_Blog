@@ -1,7 +1,9 @@
 <template>
-  <main class="full-post-page col-md-8">
-    <full-post></full-post>
-  </main>
+  <div class="row">
+    <section class="full-post-page col-md-12">
+      <full-post></full-post>
+    </section>
+  </div>
 </template>
 
 <script>
