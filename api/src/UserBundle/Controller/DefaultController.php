@@ -21,16 +21,20 @@ class DefaultController extends Controller
         $this->data = json_decode( $post , true );
     }
 
-    public function indexAction(Request $request)
+    public function registerAction(Request $request)
     {
-     $model = new UserModel($this->getDoctrine());
-     $msg = $model->create($this->data);
+        if($request->getMethod() === 'POST') {
+
+         $model = new UserModel($this->getDoctrine());
+         $msg = $model->create($this->data, $this->get('validator'));
      // $msg = $model->existUser($this->data['username'], $this->data['email']);
 
       // $model = new UserModel($this->getDoctrine());
       // $aaa = $model->isExist($this->data['username'], $this->data['email']);        
         $isXml = $request->getMethod();
-        return new Response((string)$msg); 
+            return new Response($msg); 
+        }
+        return new Response('Aby założyc konto musisz przesłac dane metodą POST'); 
     }
 
     public function authAction(Request $request)

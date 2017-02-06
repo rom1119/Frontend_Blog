@@ -22,8 +22,9 @@
       <label for="" class="login-form-password">
         <input type="submit" @click.prevent="login" id="input-send" value="Zaloguj">
       </label>
+      <button @click.prevent="verify">Verify</button>
       <div class="login-error">
-        <span>{{ msg }}</span>
+        <span v-text="msg"></span>
       </div>
     </div>
     
@@ -31,7 +32,6 @@
 </template>
 
 <script>
-import jwt_decode from 'jwt-decode';
 
 export default {
   name: 'login-page',
@@ -42,8 +42,7 @@ export default {
         password: ''
       },
       data: {},
-      token: '',
-      msg: '',
+      msg: 'dsd',
       csrf: document.cookie.slice(document.cookie.indexOf("XSRF-TOKEN=") + 11)
       
     }
@@ -64,12 +63,23 @@ export default {
       
      ).then(response => {
         var res = JSON.parse(response.body);
-        this.token = res.token;
-        this.data = jwt_decode(this.token);
         this.msg = this.data;
         console.log(response);
       }, 
       error => {
+        console.log( error);
+      })
+    },
+    verify: function () {
+      this.$http.post('http://localhost:81/symfony-project/api/web/app_dev.php/user/verify', {
+        data: this.data,
+      })
+      .then(response => {
+        this.msg = response.body.message || response.body;
+        console.log(response);
+      }, 
+      error => {
+        this.msg = error;
         console.log( error);
       })
     },

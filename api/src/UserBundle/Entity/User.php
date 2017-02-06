@@ -32,7 +32,6 @@ class User implements AdvancedUserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
-     * @Assert\NotBlank(message = "Musisz podac imie")
      */
     private $name;
 
@@ -50,7 +49,7 @@ class User implements AdvancedUserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="user_name", type="string", length=255, unique=true)
-     * 
+     * @Assert\NotBlank(message = "Musisz podać nazwę użytkownika")
      */
     private $userName;
 
@@ -93,6 +92,9 @@ class User implements AdvancedUserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, unique=true)
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *     checkMX = true )
      */
     private $email;
 

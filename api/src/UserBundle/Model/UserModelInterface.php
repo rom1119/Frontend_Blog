@@ -4,7 +4,7 @@ namespace UserBundle\Model;
 
 
 interface UserModelInterface {
-	public function create($data);
+	public function create($data, $validator);
 
 	public function delete($email);
 

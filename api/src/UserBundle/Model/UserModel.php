@@ -20,22 +20,25 @@ class UserModel  implements UserModelInterface
 		$this->bcryptEncoder = new BCryptPasswordEncoder(4);
 	}
 
-	public function create($data)
+	public function create($data, $valid)
 	{
-		if(empty($data['username']) || empty($data['password_first'])) {
-			//return 'Musisz wprowadzic wszystkie dane';
+		if(empty($data['username']) || empty($data['password_first']) || empty($data['email'])) {
+			return 'Musisz wypełnic obowiązkowe pola';
 		}
 		if($this->existUser($data['username'], $data['email'])) {
 			return "Taki użytkownik już istnieje";
 		}
-		$fullDate = $data['birthday_day'] . '-' . ($data['birthday_month'] + 1) . '-' . $data['birthday_year'];
-
 		$user = new userEntity();
+
+		if(!is_object(@\DateTime::createFromFormat("d-m-y", $data['birthday_date']))) {
+			return "wpowadzono niepoprawną date";
+		}
+		$user->setBirthdayDate(new \DateTime($data['birthday_date']));
+
 		$user->setName($data['name']);
 		$user->setSecondName($data['secondname']);
 		$user->setUserName($data['username']);
 		$user->setRole('USER');
-		$user->setBirthdayDate(new \DateTime( $fullDate));
 		$user->setGender($data['gender']);
 		$user->setPhone($data['phone']);
 		$user->setEmail($data['email']);
@@ -46,6 +49,20 @@ class UserModel  implements UserModelInterface
 		$password = $this->bcryptEncoder->encodePassword($data['password_first'], null);
 		//$password = $encoder->encodePassword($user, $data['password_first']);
     $user->setPassword($password);
+
+    $validator = $valid;
+    $errors = $validator->validate($user);
+
+    if (count($errors) > 0) {
+        /*
+         * Uses a __toString method on the $errors variable which is a
+         * ConstraintViolationList object. This gives us a nice string
+         * for debugging.
+         */
+        $errorsString =  $errors;
+
+        return $errorsString[0]->getMessage();
+    }
 
 		$dbManager = $this->dbManager;
 		$dbManager->persist($user);

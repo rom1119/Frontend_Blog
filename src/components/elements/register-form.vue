@@ -71,18 +71,18 @@
           <label for="" class="register-month col-sm-4 col-xs-6">
             <p>Miesiąc</p>
             <select name="_birthday-month" v-model="formData.birthday_month" id="input-birthday-month">
-              <option :bind-value="0">Styczeń</option>
-              <option :bind-value="1">Luty</option>
-              <option :bind-value="2">Marzec</option>
-              <option :bind-value="3">Kwiecień</option>
-              <option :bind-value="4">Maj</option>
-              <option :bind-value="5">Czerwiec</option>
-              <option :bind-value="6">Lipiec</option>
-              <option :bind-value="7">Sierpień</option>
-              <option :bind-value="8">Wrzesień</option>
-              <option :bind-value="9">Pażdziernik</option>
-              <option :bind-value="10">Listopad</option>
-              <option :bind-value="11">Grudzień</option>
+              <option value="0">Styczeń</option>
+              <option value="1">Luty</option>
+              <option value="2">Marzec</option>
+              <option value="3">Kwiecień</option>
+              <option value="4">Maj</option>
+              <option value="5">Czerwiec</option>
+              <option value="6">Lipiec</option>
+              <option value="7">Sierpień</option>
+              <option value="8">Wrzesień</option>
+              <option value="9">Pażdziernik</option>
+              <option value="10">Listopad</option>
+              <option value="11">Grudzień</option>
             </select>
           </label>
           <label for="" class="register-day col-sm-4 col-xs-6">
@@ -122,7 +122,7 @@
           </label>
           <label for="" class="register-email col-sm-6 col-xs-12"> 
             <p>Twój email <span class="text-danger">*</span></p>
-            <input type="email" name="_email" v-model="formData.email" id="input-email" value="" placeholder="user123@domena.pl" >   
+            <input type="text" name="_email" v-model="formData.email" id="input-email" value="" placeholder="user123@domena.pl" >   
           </label>
         </div>
       </fieldset>
@@ -151,10 +151,10 @@
     </div> -->
     <div class="form-element" id="register-element-form">
       <label for="" class="register-send">
-        <input  type="button" value="Zarejestruj" id="input-send">
+        <input  type="submit" value="Zarejestruj" id="input-send">
       </label>
       <div class="register-error">
-        <span>{{ msg }}</span>
+        <span v-text="msg"></span>
       </div>
     </div>
   </form>
@@ -195,9 +195,7 @@ export default {
         password_first: this.formData.password_first,
         password_conf: this.formData.password_conf,
         email: this.formData.email,
-        birthday_day: this.formData.birthday_day,
-        birthday_month: this.formData.birthday_month,
-        birthday_year: this.formData.birthday_year,
+        birthday_date: this.formData.birthday_day + '-' + this.formData.birthday_month + '-' + this.formData.birthday_year,
         gender: this.formData.gender,
         phone: this.formData.phone,
         //'_csrf': this.getCsrf()

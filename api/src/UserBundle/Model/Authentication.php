@@ -3,7 +3,6 @@
 namespace UserBundle\Model;
 
 use UserBundle\Model\UserModel;
-use Firebase\JWT\JWT;
 
 class Authentication implements AuthenticationInterface
 {
@@ -12,6 +11,8 @@ class Authentication implements AuthenticationInterface
 	function __construct(UserModel $userModel)
 	{
 		$this->userModel = $userModel;
+		$this->secret = 'secret_key';
+
 	}
 
 	public function login($email, $password)
@@ -29,7 +30,7 @@ class Authentication implements AuthenticationInterface
 			$isCorrectPass = $this->userModel->isCorrectPassword($user->getPassword(), $password);
 
 		if($isCorrectPass) {
-			$key = 'secret_key';
+
 			$payload = array(
 				'name' => $user->getName(),
 				'secondName' => $user->getSecondName(),
@@ -42,10 +43,10 @@ class Authentication implements AuthenticationInterface
 				'avatar' => $user->getAvatar(),
 				'description' => $user->getDescription(),
 				'website' => $user->getWebsite(),
-				'posts' => $user->getPosts()
+				'posts' => $user->getPosts(),
+
 				);
-			$token = JWT::encode($payload, $key, 'HS512');
-			$response['token'] = $token;
+			$response['data'] = $payload;
 			$response['message'] = 'Zostałeś zalogowany';
 			return json_encode($response);
 		}
@@ -53,14 +54,8 @@ class Authentication implements AuthenticationInterface
 		return 'Podałeś nieprawidłowe dane ';
 	}
 
-	public function isValidToken($token)
+	public function logout()
 	{
-		$key = 'secret_key';
-		try {
-			return is_object(JWT::decode($token, $key, array('HS512')));
-		} catch (\Exception $e) {
-			return false;
-		}
 		
 	}
 }
