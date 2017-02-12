@@ -10,5 +10,5 @@ interface UserModelInterface {
 
 	public function update($email);
 
-	public function readAll();
+	public function getAllUsers();
 }

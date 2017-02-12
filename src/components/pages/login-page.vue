@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <section class="login-page col-md-8">
-      <login-form @submit.native.prevent="login"></login-form>
+      <login-form ></login-form>
       <div class="register">
         <p>
           Jeśli nie masz jeszcze konta 
@@ -35,7 +35,7 @@ export default {
     'sidebar': sidebar
   },
   methods: {
-    login: function() {
+    loginn: function() {
       this.$http.post('/auth/local/', {
         email: this.email,
         password: this.password,

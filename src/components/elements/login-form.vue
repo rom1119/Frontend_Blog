@@ -22,9 +22,10 @@
       <label for="" class="login-form-password">
         <input type="submit" @click.prevent="login" id="input-send" value="Zaloguj">
       </label>
-      <button @click.prevent="verify">Verify</button>
+      <button @click.prevent="test">Verify</button>
+      <button @click.prevent="setVal">users</button>
       <div class="login-error">
-        <span v-text="msg"></span>
+        <span v-text="$root.authenticate"></span>
       </div>
     </div>
     
@@ -32,6 +33,7 @@
 </template>
 
 <script>
+
 
 export default {
   name: 'login-page',
@@ -43,27 +45,42 @@ export default {
       },
       data: {},
       msg: 'dsd',
-      csrf: document.cookie.slice(document.cookie.indexOf("XSRF-TOKEN=") + 11)
+      csrf: document.cookie.slice(document.cookie.indexOf("XSRF-TOKEN=") + 11),
+      auth: document.cookie.slice(document.cookie.indexOf("X-AUTH-TOKEN=")),
+      sessid: document.cookie.slice(document.cookie.indexOf("PHPSESSID=") + 11)
       
     }
     
   },
+  created: function (argument) {
+    this.verify();
+  },
   methods: {
+    test: function (argument) {
+      this.msg = this.$root.authenticate;
+    },
+    setVal: function (argument) {
+      this.$root.authenticate = !this.$root.authenticate;
+    },
     login: function() {
-      this.$http.post('http://localhost:81/symfony-project/api/web/app_dev.php/user/auth', {
-        email: this.credential.email,
-        password: this.credential.password,
-        //'_csrf': this.getCsrf()
-      },
+      this.$http.post('http://localhost:81/symfony-project/api/web/app_dev.php/login_check', 
+        `_username=${this.credential.email}&_password=${this.credential.password}`
+        ,
       {
         headers: {
-         // 'X-XSRF-TOKEN': this.getCsrf()
+          'Content-type': 'application/x-www-form-urlencoded',
+        //   //'X-XSRF-TOKEN': this.getCsrf()
+        //   'X-AUTH-TOKEN': 'this.auth',
+        //   'Cookie': 'this.sessid'
         }
       }
       
      ).then(response => {
-        var res = JSON.parse(response.body);
-        this.msg = this.data;
+        //var res = JSON.parse(response.body);
+        if(response.body === 'Zostałes pomyślnie zalogowany') {
+         this.$root.authenticate = true;
+          this.msg = response.body;
+        }
         console.log(response);
       }, 
       error => {
@@ -71,9 +88,37 @@ export default {
       })
     },
     verify: function () {
-      this.$http.post('http://localhost:81/symfony-project/api/web/app_dev.php/user/verify', {
-        data: this.data,
+
+      this.$http.get('http://localhost:81/symfony-project/api/web/app_dev.php/login', 
+      
+      {
+      headers: {
+          //'X-XSRF-TOKEN': this.getCsrf()
+          //'Content-type': 'application/x-www-form-urlencoded',
+         // 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+        }
+      }
+      )
+      .then(response => {
+       // this.msg = response.body.message || response.body;
+        console.log(response);
+      }, 
+      error => {
+        this.msg = error;
+        console.log( error);
       })
+    },
+    users: function () {
+      this.$http.get('http://localhost:81/symfony-project/api/web/app_dev.php/admin/users', {
+        
+      },
+      {
+      // headers: {
+      //     //'X-XSRF-TOKEN': this.getCsrf()
+      //     'Cookie': 'this.sessid'
+      //   }
+      }
+      )
       .then(response => {
         this.msg = response.body.message || response.body;
         console.log(response);

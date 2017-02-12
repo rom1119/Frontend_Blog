@@ -30,18 +30,19 @@ class UserModel  implements UserModelInterface
 		}
 		$user = new userEntity();
 
-		if(!is_object(@\DateTime::createFromFormat("d-m-y", $data['birthday_date']))) {
-			return "wpowadzono niepoprawną date";
-		}
+		// if(!is_object(@\DateTime::createFromFormat("d-m-y", '01-02-1990'))) {
+		// 	return "wpowadzono niepoprawną date";
+		// }
 		$user->setBirthdayDate(new \DateTime($data['birthday_date']));
 
 		$user->setName($data['name']);
 		$user->setSecondName($data['secondname']);
 		$user->setUserName($data['username']);
-		$user->setRole('USER');
+		$user->setRoles('ROLE_USER');
 		$user->setGender($data['gender']);
 		$user->setPhone($data['phone']);
 		$user->setEmail($data['email']);
+		$user->setApiKey(random_bytes(20));
 		//$user->setAvatar($data['avatar']);
 		//$user->setDescription($data['desc']);
 		//$user->setPosts($data['posts']);
@@ -73,7 +74,7 @@ class UserModel  implements UserModelInterface
 
 	public function getUser($email)
 	{
-		return $this->dbRepository->findOneBy(
+		return $this->dbDoctrine->getRepository('UserBundle:User')->findOneBy(
 			array('email' => $email));
 
 	}
@@ -100,7 +101,8 @@ class UserModel  implements UserModelInterface
 
 	}
 
-	public function readAll() {
+	public function getAllUsers() {
+		return $this->dbDoctrine->getRepository('UserBundle:User')->findAll();
+	}
 
 }
-	}

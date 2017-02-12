@@ -3,21 +3,20 @@
 namespace UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\EquatableInterface;
 
 /**
  * User
  *
- * @ORM\Table(name="user")
+ * @ORM\Table(name="`user`")
  * @ORM\Entity(repositoryClass="UserBundle\Repository\UserRepository")
- * @UniqueEntity(
- *     fields={"userName", "email"},
- *     message="User with this email or username is exist."
- * )
  */
-class User implements AdvancedUserInterface, \Serializable
+class User extends BaseUser 
 {
     /**
      * @var int
@@ -26,114 +25,88 @@ class User implements AdvancedUserInterface, \Serializable
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="second_name", type="string", length=255)
+     * @ORM\Column(name="second_name", type="string", length=255, nullable=true)
      */
-    private $secondName;
-
-    /**
-     * @Assert\UniqueEntity()
-     */
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="user_name", type="string", length=255, unique=true)
-     * @Assert\NotBlank(message = "Musisz podać nazwę użytkownika")
-     */
-    private $userName;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=255)
-     */
-    private $password;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="role", type="string", length=255)
-     */
-    private $role;
+    protected $secondName;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="birthday_date", type="date", nullable=true)
      */
-    private $birthdayDate;
+    protected $birthdayDate;
 
     /**
      * @var string
      *
      * @ORM\Column(name="gender", type="string", length=255, nullable=true)
      */
-    private $gender;
+    protected $gender;
 
     /**
      * @var int
      *
      * @ORM\Column(name="phone", type="integer", nullable=true)
      */
-    private $phone;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=255, unique=true)
-     * @Assert\Email(
-     *     message = "The email '{{ value }}' is not a valid email.",
-     *     checkMX = true )
-     */
-    private $email;
+    protected $phone;
 
     /**
      * @var string
      *
      * @ORM\Column(name="avatar", type="string", length=255, nullable=true)
      */
-    private $avatar;
+    protected $avatar;
 
     /**
      * @var string
      *
      * @ORM\Column(name="description", type="text", nullable=true)
      */
-    private $description;
+    protected $description;
 
     /**
      * @var array
      *
      * @ORM\Column(name="posts", type="array", nullable=true)
      */
-    private $posts;
+    protected $posts;
 
     /**
      * @var string
      *
      * @ORM\Column(name="website", type="string", length=255, nullable=true)
      */
-    private $website;
+    protected $website;
 
     /**
      * @ORM\Column(name="is_active", type="boolean")
      */
-    private $isActive;
+    protected $isActive;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="apiKey", type="string", length=255, unique=true, nullable=false)
+     */
+    protected $apiKey;
 
     public function __construct()
     {
+        parent::__construct();
         $this->isActive = true;
+        $this->apiKey = password_hash("security_key", PASSWORD_DEFAULT);
     }
 
     /**
@@ -190,75 +163,6 @@ class User implements AdvancedUserInterface, \Serializable
     public function getSecondName()
     {
         return $this->secondName;
-    }
-
-    /**
-     * Set userName
-     *
-     * @param string $userName
-     * @return User
-     */
-    public function setUserName($userName)
-    {
-        $this->userName = $userName;
-
-        return $this;
-    }
-
-    /**
-     * Get userName
-     *
-     * @return string 
-     */
-    public function getUserName()
-    {
-        return $this->userName;
-    }
-
-    /**
-     * Set password
-     *
-     * @param string $password
-     * @return User
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Get password
-     *
-     * @return string 
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * Set role
-     *
-     * @param string $role
-     * @return User
-     */
-    public function setRole($role)
-    {
-        $this->role = $role;
-
-        return $this;
-    }
-
-    /**
-     * Get role
-     *
-     * @return string 
-     */
-    public function getRole()
-    {
-        return $this->role;
     }
 
     /**
@@ -328,29 +232,6 @@ class User implements AdvancedUserInterface, \Serializable
     public function getPhone()
     {
         return $this->phone;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     * @return User
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string 
-     */
-    public function getEmail()
-    {
-        return $this->email;
     }
 
     /**
@@ -445,9 +326,27 @@ class User implements AdvancedUserInterface, \Serializable
         return $this->website;
     }
 
-        public function getRoles()
+       /**
+     * Set website
+     *
+     * @param string $website
+     * @return User
+     */
+    public function setApiKey($apiKey)
     {
-        return array('ROLE_USER');
+        $this->apiKey = $apiKey;
+
+        return $this;
+    }
+
+    /**
+     * Get website
+     *
+     * @return string 
+     */
+    public function getApiKey()
+    {
+        return $this->apiKey;
     }
 
     public function eraseCredentials()
@@ -455,53 +354,24 @@ class User implements AdvancedUserInterface, \Serializable
 
     }
 
-    public function getSalt()
-    {
-        // you *may* need a real salt depending on your encoder
-        // see section on salt below
-        return null;
-    }
+    //  public function isEqualTo(UserInterface $user)
+    // {
+    //     if (!$user instanceof User) {
+    //         return false;
+    //     }
 
-    public function serialize()
-    {
-        return serialize(array(
-            $this->id,
-            $this->username,
-            $this->password,
-            // see section on salt below
-            // $this->salt,
-        ));
-    }
+    //     if ($this->password !== $user->getPassword()) {
+    //         return false;
+    //     }
 
-    /** @see \Serializable::unserialize() */
-    public function unserialize($serialized)
-    {
-        list (
-            $this->id,
-            $this->username,
-            $this->password,
-            // see section on salt below
-            // $this->salt
-        ) = unserialize($serialized);
-    }
+    //     if ($this->salt !== $user->getSalt()) {
+    //         return false;
+    //     }
 
-       public function isAccountNonExpired()
-    {
-        return true;
-    }
+    //     if ($this->username !== $user->getUsername()) {
+    //         return false;
+    //     }
 
-    public function isAccountNonLocked()
-    {
-        return true;
-    }
-
-    public function isCredentialsNonExpired()
-    {
-        return true;
-    }
-
-    public function isEnabled()
-    {
-        return $this->isActive;
-    }
+    //     return true;
+    // }
 }

@@ -71,10 +71,10 @@
             </li>
           </ul> -->
         </li>
-        <li>
+        <li v-if="!$root.authenticate">
           <router-link to="login">Zaloguj</router-link>
         </li>
-        <li>
+        <li v-if="$root.authenticate">
           <router-link to="logout">Wyloguj się</router-link>
         </li>
       </ul>
@@ -88,7 +88,8 @@ export default {
   name: 'navigation',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+
     }
   },
   props: {

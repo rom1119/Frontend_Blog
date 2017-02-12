@@ -1,29 +1,31 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/book/security.html
+imports:
+    - { resource: @UserBundle/Resources/config/config.php }
+
 security:
-    encoders:
-        UserBundle\Entity\User:
-            algorithm: bcrypt
+    # encoders:
+    #     UserBundle\Entity\User:
+    #         algorithm: bcrypt
 
-    # ...
+    # # ...
 
-    providers:
-        our_db_provider:
-            entity:
-                class: UserBundle:User
-                property: username
-                # if you're using multiple entity managers
-                # manager_name: customer
+    # providers:
+    #     our_db_provider:
+    #         entity:
+    #             class: UserBundle:User
+    #             property: username
+    #             # if you're using multiple entity managers
+    #             # manager_name: customer
 
-    firewalls:
-        main:
-            pattern:    ^/admin
-            http_basic: ~
-            provider: our_db_provider
-            # activate different ways to authenticate
+    # firewalls:
+    #     main:
+    #         pattern:    ^/user/admin
+    #         provider: our_db_provider
+    #         # activate different ways to authenticate
 
-            # http_basic: ~
-            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
+    #         # http_basic: ~
+    #         # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
 
-            # form_login: ~
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+    #         # form_login: ~
+    #         # http://symfony.com/doc/current/cookbook/security/form_login_setup.html

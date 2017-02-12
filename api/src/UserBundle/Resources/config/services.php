@@ -27,7 +27,16 @@ $container->setDefinition(
      '%default.controller.class%'
  ));
 
- $container->setDefinition('app.token_authenticator', new Definition(
-    'Project\ProjectBundle\Security\TokenAuthenticator',
-    array(new Reference('doctrine.orm.entity_manager'))
-));
+  $container->setDefinition('app.token_authenticator', new Definition(
+     'UserBundle\Security\TokenAuthenticator', array(new Reference('doctrine.orm.entity_manager')))
+ );
+
+$container->setDefinition(
+    'app.my_user_provider',
+    new Definition('UserBundle\Security\Providers\UserProvider', array(new Reference('doctrine.orm.entity_manager')))
+    );
+
+ $container->setDefinition('time_authenticator', new Definition(
+     'UserBundle\Security\TimeAuthenticator',
+     array(new Reference('security.password_encoder'))
+ ));

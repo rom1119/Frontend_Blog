@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: @UserBundle/Resources/config/FOSConfig.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -16,19 +17,19 @@ framework:
         resource: "%kernel.root_dir%/config/routing.yml"
         strict_requirements: ~
     form:            ~
-    csrf_protection: true
+    csrf_protection: false
     validation:      { enable_annotations: true }
     serializer:      { enable_annotations: true }
     templating:
         engines: ['twig']
     default_locale:  "%locale%"
-    trusted_hosts:   ~
+    trusted_hosts:  ~
     trusted_proxies: ~
     session:
         # handler_id set to null will use default session handler from php.ini
         handler_id:  ~
     fragments:       ~
-    http_method_override: false
+    http_method_override: true
 
 # Twig Configuration
 twig:

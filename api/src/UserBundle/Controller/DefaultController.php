@@ -17,8 +17,8 @@ class DefaultController extends Controller
     public function __construct() {
         header('Access-Control-Allow-Origin: http://localhost:8080');
         header('Access-Control-Allow-Headers: Content-type');
-        $post = file_get_contents( 'php://input' );
-        $this->data = json_decode( $post , true );
+        // $post = file_get_contents( 'php://input' );
+        // $this->data = json_decode( $post , true );
     }
 
     public function registerAction(Request $request)
@@ -39,10 +39,11 @@ class DefaultController extends Controller
 
     public function authAction(Request $request)
     {
-        $auth = new Authentication(new UserModel($this->getDoctrine()));
-        $response = $auth->login($this->data['email'], $this->data['password']);
+        $auth = new Authentication(new UserModel($this->getDoctrine()), $this->getDoctrine()->getManager());
+        $response = $auth->login($this->data['_username'], $this->data['_password']);
 
-        return new JsonResponse($response);
+        //return new Response('$response', 200,array('X-AUTH-TOKEN' => $response['data']['apiKey']));
+        return new Response($response);
     }
 
     public function verifyAction(Request $request)
@@ -52,5 +53,50 @@ class DefaultController extends Controller
 
         return new Response($response);
     }
+
+    public function getUsersAction(Request $request)
+    {
+        $model = new UserModel($this->getDoctrine());
+        $users = $model->getAllUsers();
+
+        return new Response(var_dump($users));
+    }
+
+    public function loginAction(Request $request)
+    {
+        //  $authenticationUtils = $this->get('security.authentication_utils');
+
+        // // get the login error if there is one
+        // $error = $authenticationUtils->getLastAuthenticationError();
+
+        // // last username entered by the user
+        // $lastUsername = $authenticationUtils->getLastUsername();
+
+        // return $this->render(
+        //     'UserBundle:security:login.html.twig',
+        //     array(
+        //         // nazwa użytkownika ostatnio wprowadzona przez aktualnego użytkownika
+        //         'last_username' => $lastUsername,
+        //         'error'         => $error,
+        //     )
+        // );
+        return new Response($request->request->get('_password'));
+    }
+
+    public function loginCheckAction()
+     {
+         // ta akcja nie będzie wykonywana,
+         // ponieważ trasa jest wykorzystywana przez system bezpieczeństwa
+     }
+
+     public function logoutSuccessAction(Request $request)
+     {
+         return new Response('Zostałes wylogowany');
+     }
+
+     public function loginSuccessAction(Request $request)
+     {
+         return new Response('Zostałes pomyślnie zalogowany');
+     }
 
 }

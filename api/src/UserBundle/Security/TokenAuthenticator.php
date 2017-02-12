@@ -1,5 +1,5 @@
 <?php 
-namespace Project\ProjectBundle\Security;
+namespace UserBundle\Security;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -42,7 +42,7 @@ class TokenAuthenticator extends AbstractGuardAuthenticator
 
         // if null, authentication will fail
         // if a User object, checkCredentials() is called
-        return $this->em->getRepository('ProjectBundle:User')
+        return $this->em->getRepository('UserBundle:User')
             ->findOneBy(array('apiKey' => $apiKey));
     }
 
@@ -80,7 +80,7 @@ class TokenAuthenticator extends AbstractGuardAuthenticator
     {
         $data = array(
             // you might translate this message
-            'message' => 'Authentication Required'
+            'message' => $this->getCredentials($request)
         );
 
         return new JsonResponse($data, 401);
