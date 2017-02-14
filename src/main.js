@@ -24,7 +24,7 @@ Vue.use(VueLocalStorage)
 
 var router = new VueRouter({
 	routes: [
-		{path: '/', component: App,
+		{path: '/',  component: App,
 		 children: [
 		{path: '', name: 'home', component: Home},
 		{path: 'posts', name: 'posts', component: Posts},
@@ -48,7 +48,45 @@ new Vue({
 	data: function() {
 		return {
 			authenticate: false,
-			loggeUser : ''
+			loggedMsg : '',
+			router: router
+		}
+	},
+	created: function () {
+		this.isLogged();
+	},
+	methods: {
+		getCsrfHeader: function (response) {
+			if(response.body.csrf_token) {
+				return response.body.csrf_token;
+			}
+
+			return false;
+		},
+		isLogged: function (argument) {
+			this.$root.router.push('/');
+			this.$http.get('http://localhost:81/symfony-project/api/web/app_dev.php/', 
+      {
+      headers: {
+          //'Content-type': 'application/x-www-form-urlencoded',
+         // 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+        }
+      }
+      )
+      .then(response => {
+       // this.msg = response.body.message || response.body;
+       if(response.body.isAuth) {
+         this.$root.authenticate = true;
+         this.loggedMsg = 'Zalogowany jako ' + response.body.message;
+        } 
+        
+        console.log(response);
+
+      }, 
+      error => {
+        this.msg = error;
+        console.log( error);
+      })
 		}
 	},
 	watch: {

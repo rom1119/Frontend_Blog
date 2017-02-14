@@ -75,7 +75,7 @@
           <router-link to="login">Zaloguj</router-link>
         </li>
         <li v-if="$root.authenticate">
-          <router-link to="logout">Wyloguj się</router-link>
+          <router-link @click.native.prevent="logout" to="#">Wyloguj się</router-link>
         </li>
       </ul>
     </div>
@@ -91,6 +91,35 @@ export default {
       msg: 'Welcome to Your Vue.js App',
 
     }
+  },
+  methods: {
+    logout: function () {
+      this.$emit('logout');
+      this.$http.get('http://localhost:81/symfony-project/api/web/app_dev.php/logout', 
+      {
+      headers: {
+          //'X-XSRF-TOKEN': this.getCsrf()
+          //'Content-type': 'application/x-www-form-urlencoded',
+         // 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+        }
+      }
+      )
+      .then(response => {
+       // this.msg = response.body.message || response.body;
+       if(response.body === 'Zostałeś wylogowany') {
+          this.$root.authenticate = false;
+          this.$root.router.push('/');
+         
+          this.$root.loggedMsg = response.body;
+        }
+        console.log(response);
+
+      }, 
+      error => {
+        this.msg = error;
+        console.log( error);
+      })
+    },
   },
   props: {
 

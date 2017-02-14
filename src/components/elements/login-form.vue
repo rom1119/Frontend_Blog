@@ -22,10 +22,10 @@
       <label for="" class="login-form-password">
         <input type="submit" @click.prevent="login" id="input-send" value="Zaloguj">
       </label>
-      <button @click.prevent="test">Verify</button>
-      <button @click.prevent="setVal">users</button>
+      <button @click.prevent="">Verify</button>
+      <button @click.prevent="">users</button>
       <div class="login-error">
-        <span v-text="$root.authenticate"></span>
+        <span v-text="msg"></span>
       </div>
     </div>
     
@@ -41,11 +41,11 @@ export default {
     return {
       credential: {
         email: '',
-        password: ''
+        password: '',
+        _csrf: ''
       },
       data: {},
-      msg: 'dsd',
-      csrf: document.cookie.slice(document.cookie.indexOf("XSRF-TOKEN=") + 11),
+      msg: 'dsd',     
       auth: document.cookie.slice(document.cookie.indexOf("X-AUTH-TOKEN=")),
       sessid: document.cookie.slice(document.cookie.indexOf("PHPSESSID=") + 11)
       
@@ -64,7 +64,7 @@ export default {
     },
     login: function() {
       this.$http.post('http://localhost:81/symfony-project/api/web/app_dev.php/login_check', 
-        `_username=${this.credential.email}&_password=${this.credential.password}`
+        `_csrf_token=${this.credential._csrf}&_username=${this.credential.email}&_password=${this.credential.password}`
         ,
       {
         headers: {
@@ -77,9 +77,13 @@ export default {
       
      ).then(response => {
         //var res = JSON.parse(response.body);
-        if(response.body === 'Zostałes pomyślnie zalogowany') {
-         this.$root.authenticate = true;
-          this.msg = response.body;
+        if(response.body.isAuth) {
+          this.$root.authenticate = true;
+          this.$root.router.push('/');
+          this.$root.loggedMsg = 'Zalogowany jako ' + response.body.message;
+        } else {
+          this.$root.authenticate = false;
+          this.msg = response.body.message;
         }
         console.log(response);
       }, 
@@ -88,9 +92,7 @@ export default {
       })
     },
     verify: function () {
-
-      this.$http.get('http://localhost:81/symfony-project/api/web/app_dev.php/login', 
-      
+      this.$http.get('http://localhost:81/symfony-project/api/web/app_dev.php/login',   
       {
       headers: {
           //'X-XSRF-TOKEN': this.getCsrf()
@@ -100,7 +102,8 @@ export default {
       }
       )
       .then(response => {
-       // this.msg = response.body.message || response.body;
+        this.msg = this.$root.getCsrfHeader(response);
+       this.credential._csrf = this.$root.getCsrfHeader(response);
         console.log(response);
       }, 
       error => {

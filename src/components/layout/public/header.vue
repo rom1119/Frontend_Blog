@@ -1,7 +1,7 @@
 <template>
   <header class="header-site">
     <logo></logo>
-    <navigation></navigation>
+    <navigation ></navigation>
   </header>
 </template>
 
@@ -13,6 +13,11 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
+    }
+  },
+  methods: {
+    al: function (argument) {
+      alert('sdf');
     }
   },
   props: {

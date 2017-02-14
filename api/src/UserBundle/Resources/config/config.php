@@ -65,9 +65,9 @@ $container->loadFromExtension('security', array(
              'anonymous' => true,
             'form_login' => array(
                  'provider' => 'fos_userbundle',
-                // 'csrf_token_generator' => 'security.csrf.token_manager',
-                 'default_target_path' => '/'
-                 //'always_use_default_target_path' => false,
+                 'csrf_token_generator' => 'security.csrf.token_manager',
+                 //'default_target_path' => '/',
+//                 'always_use_default_target_path' => true,
                  //'use_forward' => true
              ),
 

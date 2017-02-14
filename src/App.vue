@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <header-page></header-page>
+    <header-page v-on:logout="al"></header-page>
     <section id="strap-info">
-      <div class="logged-as" v-html="loggedAs">
+      <div class="logged-as" v-text="$root.loggedMsg">
         
       </div>
     </section>  
@@ -36,6 +36,9 @@ export default {
       let lsValue = this.$localStorage.get('someObject')
       this.$localStorage.set('someBoolean', true)
       this.$localStorage.remove('stringOne')
+    },
+    al: function (argument) {
+      alert('sdf');
     }
   },
   components: {

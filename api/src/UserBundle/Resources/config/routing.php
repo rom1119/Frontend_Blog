@@ -25,10 +25,12 @@ $collection->add('getUsers', new Route('/admin/users', array(
     '_controller' => 'UserBundle:Default:getUsers'), array(),array(),null, null, array('GET','OPTIONS', 'POST', 'PUT')
     ));
 
+
+
 // $collection->add('logout', new Route('/admin/logout'));
-// $collection->add('login_route', new Route('/login', array(
-//     '_controller' => 'UserBundle:Default:login'), array(),array(),null, null, array('GET','OPTIONS', 'POST', 'PUT')
-//     ));
+ $collection->add('login_route', new Route('/login', array(
+     '_controller' => 'UserBundle:Security:login'), array(),array(),null, null, array('GET')
+     ));
 
 // $collection->add('login_check', new Route('/login_check'));
 

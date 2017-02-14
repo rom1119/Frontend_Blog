@@ -80,7 +80,17 @@ class DefaultController extends Controller
         //         'error'         => $error,
         //     )
         // );
-        return new Response($request->request->get('_password'));
+
+
+        if ($this->has('security.csrf.token_manager')) {
+            $csrfToken = $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue();
+        } else {
+            // BC for SF < 2.4
+            $csrfToken = $this->has('form.csrf_provider')
+                ? $this->get('form.csrf_provider')->generateCsrfToken('authenticate')
+                : null;
+        }
+        return new Response('Wpisz dane logowania');
     }
 
     public function loginCheckAction()
@@ -91,12 +101,26 @@ class DefaultController extends Controller
 
      public function logoutSuccessAction(Request $request)
      {
-         return new Response('Zostałes wylogowany');
+
+         return new Response('Zostałeś wylogowany');
      }
 
      public function loginSuccessAction(Request $request)
      {
-         return new Response('Zostałes pomyślnie zalogowany');
+         try {
+             $tokenStorage = $this->get('security.token_storage');
+             if(!is_object($user = $tokenStorage->getToken()->getUser())) {
+                 throw new \Exception();
+             }
+                 $response['message'] = $user->getUsername();
+                 $response['isAuth'] = true;
+
+         } catch (\Exception $e) {
+             $response['message'] = 'Nie jesteś zalogowany' ;
+             $response['isAuth'] = false;
+         }
+
+         return new JsonResponse($response);
      }
 
 }

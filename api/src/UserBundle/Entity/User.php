@@ -107,6 +107,7 @@ class User extends BaseUser
         parent::__construct();
         $this->isActive = true;
         $this->apiKey = password_hash("security_key", PASSWORD_DEFAULT);
+        $this->addRole(static::ROLE_SUPER_ADMIN);
     }
 
     /**
