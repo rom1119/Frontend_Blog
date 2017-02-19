@@ -5,16 +5,3 @@ npm-debug.log
 test/unit/coverage
 test/e2e/reports
 selenium-debug.log
-api/web/bundles/
-api/app/bootstrap.php.cache
-api/app/cache/*
-api/app/config/parameters.yml
-api/app/logs/*
-api/!app/cache/.gitkeep
-api/!app/logs/.gitkeep
-api/app/phpunit.xml
-api/build/
-api/vendor/
-api/bin/
-api/composer.phar
-

@@ -6,9 +6,9 @@
  */
 
 // Core variables and mixins
+@import "mixins";
 @import "custom";
 @import "variables";
-@import "mixins";
 
 // Reset and dependencies
 @import "normalize";
@@ -25,6 +25,7 @@
 @import "buttons";
 
 // Components
+@import "alert";
 @import "animation";
 @import "dropdown";
 @import "button-group";

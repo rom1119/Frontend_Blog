@@ -25,6 +25,10 @@ $collection->add('getUsers', new Route('/admin/users', array(
     '_controller' => 'UserBundle:Default:getUsers'), array(),array(),null, null, array('GET','OPTIONS', 'POST', 'PUT')
     ));
 
+$collection->add('register', new Route('/registerr', array(
+    '_controller' => 'UserBundle:Registration:register'), array(),array(),null, null, array('GET','OPTIONS', 'POST', 'PUT')
+    ));
+
 
 
 // $collection->add('logout', new Route('/admin/logout'));

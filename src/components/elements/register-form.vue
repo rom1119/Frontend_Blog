@@ -44,11 +44,11 @@
           </span>
         </legend>
         <div class="row">
-          <label for="" class="register-password col-sm-6 col-xs-12">
+          <label for="input-password" class="register-password col-sm-6 col-xs-12">
             <p>Wpisz hasło <span class="text-danger">*</span></p>
             <input type="password" name="_password" v-model="formData.password_first" id="input-password" min="6" placeholder="min. 6 znaków" >
           </label>
-          <label for="" class="register-password col-sm-6 col-xs-12">
+          <label for="input-password-conf" class="register-password col-sm-6 col-xs-12">
             <p>Potwierdż hasło <span class="text-danger">*</span></p>
             <input type="password" name="_password_conf" v-model="formData.password_conf" id="input-password-conf" min="6" placeholder="min. 6 znaków" >
           </label>
@@ -64,11 +64,11 @@
           </span>
         </legend>
         <div class="row">
-          <label for="" class="register-year col-sm-4 col-xs-6">
+          <label for="input-birthday-year" class="register-year col-sm-4 col-xs-6">
             <p>Rok</p>
             <input type="number" name="_birthday-year" v-model="formData.birthday_year" id="input-birthday-year">
           </label>
-          <label for="" class="register-month col-sm-4 col-xs-6">
+          <label for="input-birthday-month" class="register-month col-sm-4 col-xs-6">
             <p>Miesiąc</p>
             <select name="_birthday-month" v-model="formData.birthday_month" id="input-birthday-month">
               <option value="0">Styczeń</option>
@@ -85,7 +85,7 @@
               <option value="11">Grudzień</option>
             </select>
           </label>
-          <label for="" class="register-day col-sm-4 col-xs-6">
+          <label for="input-birthday-day" class="register-day col-sm-4 col-xs-6">
             <p>Dzień</p>
             <input type="number" name="_birthday-day" v-model="formData.birthday_day" id="input-birthday-day">
           </label>
@@ -116,11 +116,11 @@
           </span>
         </legend>
         <div class="row">
-          <label for="" class="register-phone col-sm-6 col-xs-12"> 
+          <label for="input-phone" class="register-phone col-sm-6 col-xs-12"> 
             <p>Telefon komórkowy</p>
             <input type="tel" name="_phone" v-model="formData.phone" id="input-phone" value="" placeholder="+48 123 456 789">   
           </label>
-          <label for="" class="register-email col-sm-6 col-xs-12"> 
+          <label for="input-email" class="register-email col-sm-6 col-xs-12"> 
             <p>Twój email <span class="text-danger">*</span></p>
             <input type="text" name="_email" v-model="formData.email" id="input-email" value="" placeholder="user123@domena.pl" >   
           </label>

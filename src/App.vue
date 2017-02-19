@@ -17,15 +17,15 @@
 
 <script>
 import header from 'components/layout/public/header.vue'
-import post from 'components/layout/public/footer.vue'
 import sidebar from 'components/layout/public/sidebar.vue'
+import footer from 'components/layout/public/footer.vue'
 
 export default {
   name: 'App',
   data: function() {
     return {
       path: "window.location.hash",
-      loggedAs : 'Zalogowany jako rom1119'
+      loggedAs : ''
     }
   },
   methods: {
@@ -44,7 +44,7 @@ export default {
   components: {
     'header-page': header,
     'sidebar': sidebar,
-    'footer-page': post
+    'footer-page': footer
   }
 }
 </script>

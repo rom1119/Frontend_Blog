@@ -31,7 +31,7 @@
         </time>
       </div>
       <div class="read-more">
-        <a href="" class="read-more-btn">
+        <a href="#/post" class="read-more-btn">
           Read More
         </a>
       </div>
