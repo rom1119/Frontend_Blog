@@ -10,19 +10,5 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class DefaultController extends Controller
 {
-    /**
-     * @Route("/register", name="homepage")
-     */
-    public function indexAction(Request $request)
-    {
-        header('Access-Control-Allow-Origin: http://localhost:8080');
-        header('Access-Control-Allow-Headers: Content-type');
-
-        $post = file_get_contents( 'php://input' );
-        //$_POST = json_decode( $post , true );
-
-        // replace this example code with whatever you need
-        $isXml = $request->get('email');
-        return new JsonResponse(array("fsdf" => $post)); 
-    }
+  
 }

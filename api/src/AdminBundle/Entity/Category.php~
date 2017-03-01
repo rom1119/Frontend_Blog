@@ -1,15 +1,16 @@
 <?php
 
-namespace UserBundle\Entity;
+namespace AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Category
  *
  * @ORM\Table(name="category")
- * @ORM\Entity(repositoryClass="UserBundle\Repository\CategoryRepository")
+ * @ORM\Entity(repositoryClass="AdminBundle\Repository\CategoryRepository")
  */
 abstract class Category
 {
@@ -33,6 +34,7 @@ abstract class Category
      * @var array
      *
      * @ORM\Column(name="Posts", type="json_array", nullable=true)
+     * @ORM\OneToMany(targetEntity="Article", mappedBy="category")
      */
     private $posts;
 
@@ -47,6 +49,8 @@ abstract class Category
      * @var \stdClass
      *
      * @ORM\Column(name="Author", type="object")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="category")
+     * @ORM\JoinColumn(name="name", referencedColumnName="id")
      */
     private $author;
 
@@ -56,6 +60,11 @@ abstract class Category
      * @ORM\Column(name="Type", type="string", length=255)
      */
     private $type;
+
+    public function __construct()
+    {
+        $this->posts = new ArrayCollection();
+    }
 
 
     /**
@@ -158,5 +167,28 @@ abstract class Category
     public function getAuthor()
     {
         return $this->author;
+    }
+
+     /**
+     * Set type category
+     *
+     * @param string $type
+     * @return Category
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type category
+     *
+     * @return string 
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }

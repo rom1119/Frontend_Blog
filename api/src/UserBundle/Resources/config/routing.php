@@ -27,6 +27,10 @@ $collection->add('get_articles', new Route('/posts', array(
      '_controller' => 'UserBundle:Article:getArticles'), array(),array(),null, null, array('GET')
 ));
 
+$collection->add('get_article', new Route('/post/{id}', array(
+     '_controller' => 'UserBundle:Article:getArticle'), array(),array(),null, null, array('GET')
+));
+
 
 return $collection;
 

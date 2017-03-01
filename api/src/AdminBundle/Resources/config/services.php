@@ -20,14 +20,12 @@ $container->setDefinition(
 );
 
 */
- $container->setParameter('default.controller.class', 'Project\ProjectBundle\Entity2\Task');
- $container->setParameter('my_mailer.transport', 'sendmail');
+ $container->setDefinition(
+    'blog.admin.model.category_manager',
+    new Definition('AdminBundle\Model\CategoryManager', array(new Reference('doctrine.orm.entity_manager')))
+    );
 
- $container->setDefinition('my_data_base', new Definition(
-     '%default.controller.class%'
- ));
-
- $container->setDefinition('app.token_authenticator', new Definition(
-    'Project\ProjectBundle\Security\TokenAuthenticator',
-    array(new Reference('doctrine.orm.entity_manager'))
-));
+  $container->setDefinition(
+    'blog.admin.model.article_manager',
+    new Definition('AdminBundle\Model\ArticleManager', array(new Reference('doctrine.orm.entity_manager')))
+    );

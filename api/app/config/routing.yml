@@ -5,6 +5,10 @@ user:
     # type: rest
     resource: "@UserBundle/Resources/config/routing.php"
 
+admin: 
+    # type: rest
+    resource: "@AdminBundle/Resources/config/routing.php"
+
 fos_user:
     # type: rest
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"

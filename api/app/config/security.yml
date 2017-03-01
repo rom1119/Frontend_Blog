@@ -3,6 +3,8 @@
 imports:
     - { resource: @UserBundle/Resources/config/config.php }
 
+
+
 security:
     # encoders:
     #     UserBundle\Entity\User:

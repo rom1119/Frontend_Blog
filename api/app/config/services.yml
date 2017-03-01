@@ -2,6 +2,7 @@
 # http://symfony.com/doc/current/book/service_container.html
 imports:
     - { resource: @UserBundle/Resources/config/services.php }
+    - { resource: @AdminBundle/Resources/config/services.php }
 parameters:
 #    parameter_name: value
 

@@ -1,46 +1,49 @@
 <?php
 $container->loadFromExtension('security', array(
     'encoders' => array(
-        'Symfony\Component\Security\Core\User\User' => 'plaintext',
+
+        'FOS\UserBundle\Model\UserInterface' => array(
+            'algorithm' => 'bcrypt',
+
+        )
+    ),
+
+    'role_hierarchy' => array(
+        'ROLE_ADMIN' => 'ROLE_ADMIN',
+        'ROLE_SUPER_ADMIN' => 'ROLE_ADMIN'
     ),
 
     'providers' => array(
-        'in_memory' => array(
-            'memory' => array(
-                'users' => array(
-                    'ryan' => array(
-                        'password' => 'ryanpass',
-                        'roles' => 'ROLE_USER',
-                    ),
-                    'admin' => array(
-                        'password' => 'kitten',
-                        'roles' => 'ROLE_ADMIN',
-                    ),
-                ),
-            ),
-        ),
+
+        'fos_userbundle' => array(
+            'id' => 'fos_user.user_provider.username'    
+        )
     ),
 
     'firewalls' => array(
-         'secured_area' => array(
-         	'logout' => array('path' => '/logout', 'target' => '/widget'),
-             'pattern'    => '^/',
-             'anonymous' => array(),
-             
-             'http_basic' => array(
-                 'realm'  => 'Secured Demo Area',
+        'main' => array(
+             'logout' => array('path' => '/logout', 'target' => '/logout/success'),
+            'pattern'    => '^/',
+            'anonymous' => true,
+            'form_login' => array(
+                 'provider' => 'fos_userbundle',
+                 'csrf_token_generator' => 'security.csrf.token_manager',
+                 //'default_target_path' => '/',
+                 //'always_use_default_target_path' => true,
+                 //'use_forward' => true
              ),
-         ),
+            
+
+        ),
          
 
      ),
 
-    'access_control' => array(
-     array('path' => '^/admin', 'role' => 'ROLE_ADMIN'),
+    // 'access_control' => array(
+
+    //     array('path' => '^/postadd$', 'role' => 'ROLE_SUPER_ADMIN'),
      
- ),
+    // ),
 
 
 ));
-
-

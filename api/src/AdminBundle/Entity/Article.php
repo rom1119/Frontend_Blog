@@ -1,6 +1,6 @@
 <?php
 
-namespace UserBundle\Entity;
+namespace AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -9,9 +9,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Article
  *
  * @ORM\Table(name="article")
- * @ORM\Entity(repositoryClass="UserBundle\Repository\ArticleRepository")
+ * @ORM\Entity(repositoryClass="AdminBundle\Repository\ArticleRepository")
  */
-abstract class Article
+class Article
 {
     /**
      * @var int
@@ -39,14 +39,18 @@ abstract class Article
     /**
      * @var int
      *
-     * @ORM\Column(name="Category", type="integer")
+     * @ORM\Column(name="Category", type="object")
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="posts")
+     * @ORM\JoinColumn(name="Category", referencedColumnName="id")
      */
     private $category;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="Author", type="integer")
+     * @ORM\Column(name="Author", type="object")
+     * @ORM\ManyToOne(targetEntity="UserBundle:User", inversedBy="user")
+     * @ORM\JoinColumn(name="username", referencedColumnName="id")
      */
     private $author;
 
@@ -105,6 +109,13 @@ abstract class Article
      * @ORM\Column(name="Rating", type="integer", nullable=true)
      */
     private $rating;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Type", type="string", length=255)
+     */
+    private $type;
 
     /**
      * @var int
@@ -378,6 +389,29 @@ abstract class Article
     }
 
     /**
+     * Set type article
+     *
+     * @param string $type
+     * @return Article
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type article
+     *
+     * @return string 
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
      * Set rating
      *
      * @param integer $rating
@@ -398,5 +432,28 @@ abstract class Article
     public function getRating()
     {
         return $this->rating;
+    }
+
+    /**
+     * Set published
+     *
+     * @param boolean $published
+     * @return Article
+     */
+    public function setPublished($published)
+    {
+        $this->published = $published;
+
+        return $this;
+    }
+
+    /**
+     * Get published
+     *
+     * @return boolean 
+     */
+    public function getPublished()
+    {
+        return $this->published;
     }
 }

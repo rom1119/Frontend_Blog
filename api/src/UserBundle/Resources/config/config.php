@@ -42,6 +42,8 @@ $container->loadFromExtension('security', array(
     'access_control' => array(
 
         array('path' => '^/login$', 'role' => 'IS_AUTHENTICATED_ANONYMOUSLY'),
+        array('path' => '^/post$', 'role' => 'ROLE_SUPER_ADMIN'),
+        array('path' => '^/category$', 'role' => 'ROLE_SUPER_ADMIN'),
      
     ),
 
