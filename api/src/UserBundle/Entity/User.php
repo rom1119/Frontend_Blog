@@ -95,19 +95,12 @@ class User extends BaseUser
      */
     protected $isActive;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="apiKey", type="string", length=255, unique=true, nullable=false)
-     */
-    protected $apiKey;
 
     public function __construct()
     {
         parent::__construct();
         $this->isActive = true;
-        $this->apiKey = password_hash("security_key", PASSWORD_DEFAULT);
-        $this->addRole(static::ROLE_SUPER_ADMIN);
+       // $this->addRole(static::ROLE_SUPER_ADMIN);
     }
 
     /**
@@ -327,28 +320,6 @@ class User extends BaseUser
         return $this->website;
     }
 
-       /**
-     * Set website
-     *
-     * @param string $website
-     * @return User
-     */
-    public function setApiKey($apiKey)
-    {
-        $this->apiKey = $apiKey;
-
-        return $this;
-    }
-
-    /**
-     * Get website
-     *
-     * @return string 
-     */
-    public function getApiKey()
-    {
-        return $this->apiKey;
-    }
 
     public function eraseCredentials()
     {

@@ -21,7 +21,7 @@ class UserRepository extends EntityRepository implements UserLoaderInterface
 		return $qb->select('u')
 			->from('UserBundle:User', 'u')
 			->where($qb->expr()->orX
-				($qb->expr()->eq('u.userName', ':username'), 
+				($qb->expr()->eq('u.username', ':username'), 
 				$qb->expr()->eq('u.email', ':email')))
 			->setParameters(array(
 			'username' => $username,
