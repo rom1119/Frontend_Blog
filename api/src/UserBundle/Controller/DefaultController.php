@@ -6,9 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use UserBundle\Model\UserModel;
-use UserBundle\Model\Authentication;
-use UserBundle\Repository\UserRepository;
 
 class DefaultController extends Controller
 {

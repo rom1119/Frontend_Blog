@@ -22,8 +22,6 @@
       <label for="" class="login-form-password">
         <input type="submit" @click.prevent="login" id="input-send" value="Zaloguj">
       </label>
-      <button @click.prevent="">Verify</button>
-      <button @click.prevent="">users</button>
       <div class="login-error">
         <span v-text="msg"></span>
       </div>

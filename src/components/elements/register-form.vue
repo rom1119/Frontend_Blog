@@ -190,25 +190,11 @@ export default {
     register: function() {
       this.$http.post('http://localhost:81/symfony-project/api/web/app_dev.php/register', 
         `username=${this.formData.username}&pass_first=${this.formData.password_first}&pass_conf=${this.formData.password_conf}&email=${this.formData.email}&name=${this.formData.name}`
-      // {
-      //   name: this.formData.name,
-      //   secondname: this.formData.secondname,
-      //   username: this.formData.username,
-      //   password_first: this.formData.password_first,
-      //   password_conf: this.formData.password_conf,
-      //   email: this.formData.email,
-      //   birthday_date: this.formData.birthday_day + '-' + this.formData.birthday_month + '-' + this.formData.birthday_year,
-      //   gender: this.formData.gender,
-      //   phone: this.formData.phone,
-      //   //'_csrf': this.getCsrf()
-      // }
       ,
       {
         headers: {
           'Content-type': 'application/x-www-form-urlencoded',
-        //   //'X-XSRF-TOKEN': this.getCsrf()
-        //   'X-AUTH-TOKEN': 'this.auth',
-        //   'Cookie': 'this.sessid'
+
         }
       }
       
