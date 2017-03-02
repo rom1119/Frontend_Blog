@@ -12,12 +12,6 @@ use Symfony\Component\Security\Core\Exception\AuthenticationException;
 
 class SecurityController extends BaseController
 {
-    public function __construct() {
-        header('Access-Control-Allow-Origin: http://localhost:8080');
-        header('Access-Control-Allow-Headers: Content-type');
-        // $post = file_get_contents( 'php://input' );
-        // $this->data = json_decode( $post , true );
-    }
 
     public function loginAction(Request $request)
     {

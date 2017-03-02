@@ -25,8 +25,8 @@ class ArticleManager implements ArticleManagerInterface
   {
     $article = new Article();
 
-    $article->setTitle($data->get('title'));
-    $article->setContent($data->get('content'));
+    $article->setTitle($data->get('_title'));
+    $article->setContent($data->get('_content'));
     $article->setCategory($category);
     $article->setAuthor($author);
     $article->setDate(new \DateTime());
@@ -44,7 +44,19 @@ class ArticleManager implements ArticleManagerInterface
 
   public function getAll()
   {
-    return $this->dbRepository->findAll();
+    $res = $this->dbRepository->findAll();
+    $arr = [];
+    $i = 0;
+     foreach ($res as $key => $value) {
+       $arr[$i]['title'] = $value->getTitle();
+       $arr[$i]['content'] = $value->getContent();
+       $arr[$i]['category'] = $value->getCategory()->getName();
+       $arr[$i]['author'] = $value->getAuthor()->getUsername();
+       $arr[$i]['date'] = $value->getDate();
+       $i++;
+     }
+
+     return $arr;
   }
 
   public function update(Article $article)

@@ -42,7 +42,7 @@ new Vue({
 		},
 		isLogged: function (argument) {
 			this.$root.router.push('/');
-			this.$http.get('http://localhost:81/symfony-project/api/web/app_dev.php/', 
+			this.$http.get('../api/web/', 
       {
       headers: {
           //'Content-type': 'application/x-www-form-urlencoded',

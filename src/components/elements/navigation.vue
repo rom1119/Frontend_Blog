@@ -77,6 +77,9 @@
         <li v-if="$root.authenticate">
           <router-link @click.native.prevent="logout" to="#">Wyloguj się</router-link>
         </li>
+        <li v-if="$root.authenticate">
+          <router-link  to="admin/add-post">Admin</router-link>
+        </li>
       </ul>
     </div>
   </nav>

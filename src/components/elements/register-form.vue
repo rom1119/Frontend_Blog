@@ -188,7 +188,7 @@ export default {
   },
   methods: {
     register: function() {
-      this.$http.post('http://localhost:81/symfony-project/api/web/app_dev.php/register', 
+      this.$http.post('../api/web/register', 
         `username=${this.formData.username}&pass_first=${this.formData.password_first}&pass_conf=${this.formData.password_conf}&email=${this.formData.email}&name=${this.formData.name}`
       ,
       {
