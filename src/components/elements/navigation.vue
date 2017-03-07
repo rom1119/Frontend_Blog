@@ -77,6 +77,9 @@
         <li v-if="$root.authenticate">
           <router-link @click.native.prevent="logout" to="#">Wyloguj się</router-link>
         </li>
+        <li v-if="$root.authenticate">
+          <router-link  to="admin/add-post">Admin</router-link>
+        </li>
       </ul>
     </div>
   </nav>
@@ -95,7 +98,7 @@ export default {
   methods: {
     logout: function () {
       this.$emit('logout');
-      this.$http.get('http://localhost:81/symfony-project/api/web/app_dev.php/logout', 
+      this.$http.get('../api/web/logout', 
       {
       headers: {
           //'X-XSRF-TOKEN': this.getCsrf()

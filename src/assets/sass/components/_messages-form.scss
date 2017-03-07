@@ -1,0 +1,21 @@
+.msg-error {
+  display: inline-block;
+  padding-top: 5px;
+  span {
+    color: #CD5050;
+  }
+}
+
+.msg-success {
+  display: inline-block;
+  padding-top: 5px;
+  span {
+    color: #0D7B1A;
+  }
+}
+
+@mixin msg($type) {
+
+    @extend .msg-#{$type}() ;
+
+}

@@ -32,7 +32,7 @@ class CategoryManager implements CategoryManagerInterface
     // }
 
     $category->setDate(new \DateTime());
-    $category->setName($data->get('category'));
+    $category->setName($data->get('_category'));
     $category->setAuthor($author);
 
     return $category;
@@ -56,7 +56,12 @@ class CategoryManager implements CategoryManagerInterface
 
   public function getAll()
   {
-     return $this->dbRepository->findAll();
+     $arr = $this->dbRepository->findAll();
+     foreach ($arr as $value) {
+       $response[] = $value->getName();
+     }
+
+     return $response;
   }
 
   public function update(Category $category)

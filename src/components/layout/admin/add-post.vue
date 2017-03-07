@@ -1,9 +1,9 @@
 <template>
-
+  <add-post-form></add-post-form>
 </template>
 
 <script>
-import post from './Post'
+import postFormAdd from '../../elements/add-post-form.vue'
 
 export default {
   name: 'admin-add-post',
@@ -16,7 +16,7 @@ export default {
 
   },
   components: {
-    post: post
+    'add-post-form': postFormAdd
   }
 }
 </script>

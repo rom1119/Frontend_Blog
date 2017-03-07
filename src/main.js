@@ -33,7 +33,28 @@ new Vue({
 		this.isLogged();
 	},
 	methods: {
-		getCsrfHeader: function (response) {
+     fetchCsrf: function (data) {
+      this.$http.get('../api/web/csrf',   
+      {
+      headers: {
+          //'X-XSRF-TOKEN': this.getCsrf()
+          //'Content-type': 'application/x-www-form-urlencoded',
+         // 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+        }
+      }
+      )
+      .then(response => {
+       // this.msg = this.$root.getCsrfHeader(response);
+        console.log(response);
+
+       data._csrf = this.getCsrf(response);
+      }, 
+      error => {
+        //this.msg = error;
+        console.log( error);
+      })
+    },
+		getCsrf: function (response) {
 			if(response.body.csrf_token) {
 				return response.body.csrf_token;
 			}
@@ -42,7 +63,7 @@ new Vue({
 		},
 		isLogged: function (argument) {
 			this.$root.router.push('/');
-			this.$http.get('http://localhost:81/symfony-project/api/web/app_dev.php/', 
+			this.$http.get('../api/web/', 
       {
       headers: {
           //'Content-type': 'application/x-www-form-urlencoded',

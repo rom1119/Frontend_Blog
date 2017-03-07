@@ -17,11 +17,11 @@ $collection->add('add_category', new Route('/category', array(
      '_controller' => 'AdminBundle:Category:addCategory'), array(),array(),null, null, array('POST')
 ));
 
-$collection->add('add_category', new Route('/category/all', array(
+$collection->add('get_all_category', new Route('/category/all', array(
      '_controller' => 'AdminBundle:Category:getCategoryAll'), array(),array(),null, null, array('GET')
 ));
 
-$collection->add('add_category', new Route('/category/{name}', array(
+$collection->add('get_category', new Route('/category/{name}', array(
      '_controller' => 'AdminBundle:Category:getCategory'), array(),array(),null, null, array('GET')
 ));
 

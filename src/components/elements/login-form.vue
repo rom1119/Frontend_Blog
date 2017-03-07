@@ -61,7 +61,7 @@ export default {
       this.$root.authenticate = !this.$root.authenticate;
     },
     login: function() {
-      this.$http.post('http://localhost:81/symfony-project/api/web/app_dev.php/login_check', 
+      this.$http.post('../api/web/login_check', 
         `_csrf_token=${this.credential._csrf}&_username=${this.credential.email}&_password=${this.credential.password}`
         ,
       {
@@ -90,7 +90,7 @@ export default {
       })
     },
     verify: function () {
-      this.$http.get('http://localhost:81/symfony-project/api/web/app_dev.php/login',   
+      this.$http.get('../api/web/login',   
       {
       headers: {
           //'X-XSRF-TOKEN': this.getCsrf()
@@ -100,7 +100,7 @@ export default {
       }
       )
       .then(response => {
-        this.msg = this.$root.getCsrfHeader(response);
+       // this.msg = this.$root.getCsrfHeader(response);
        this.credential._csrf = this.$root.getCsrfHeader(response);
         console.log(response);
       }, 
@@ -110,7 +110,7 @@ export default {
       })
     },
     users: function () {
-      this.$http.get('http://localhost:81/symfony-project/api/web/app_dev.php/admin/users', {
+      this.$http.get('../api/web/admin/users', {
         
       },
       {

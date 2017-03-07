@@ -54,27 +54,38 @@
           </h3>
           <form accept-charset="utf-8" id="contact-form-footer" action="" method="POST">
             <div class="contact-form-element" id="contact-email">
-              <legend>
-                <span>
-                  Email:
-                </span>
-              </legend>
-              <label >
-                <input type="text" id="email-input" name="email" placeholder="nick_jonson@domain.com">
+              <label for="email-input">
+                Twoj email:
               </label>
+              <input type="text" id="email-input" name="_email" v-model="dataForm.email" placeholder="nick_jonson@domain.com">
+              <div class="msg-error">
+                <span v-text="msg.email">sdfasd</span>
+              </div>
+            </div>
+            <div class="contact-form-element" id="contact-subject">
+              <label for="subject-input">
+                Temat wiadomosci:
+              </label>
+              <input type="text" id="subject-input" name="_subject" v-model="dataForm.subject">
+              <div class="msg-error">
+                <span v-text="msg.subject"></span>
+              </div>
             </div>
             <div class="contact-form-element" id="contact-message">
-              <legend>
-                <span>
-                  Message:
-                </span>
-              </legend>
-              <textarea name="message" id="message-input" placeholder="Your message..."></textarea>
+              <label for="message-input">
+                Tresc wiadomosci:
+              </label>
+              <textarea name="_body" v-model="dataForm.body" id="message-input" placeholder="Your message..."></textarea>
+              <div class="msg-error">
+                <span v-text="msg.body"></span>
+              </div>
             </div>
             <div class="contact-form-element" id="contact-send">
-              <label for="">
-                <input type="submit" class="contact-submit" id="submit-input" value="Wyślij">
-              </label>
+              <label for="submit-input"></label>
+              <input type="submit" @click.prevent="sendContactMessage" class="contact-submit" id="submit-input" value="Wyślij">
+              <div class="msg-success">
+                <span v-text="msg.success"></span>
+              </div>
             </div>
           </form>
         </section>
@@ -97,7 +108,41 @@ export default {
   name: 'footer-page',
   data () {
     return {  
-      msg: 'Welcome to Your Vue.js App'
+      msg: '',
+      dataForm: {
+        _csrf: '',
+        email: '',
+        subject: '',
+        body: ''
+      }
+    }
+  },
+  created: function (argument) {
+    this.$root.fetchCsrf(this.dataForm);
+  },
+  methods: {
+    sendContactMessage: function (argument) {
+      this.$http.post('../api/web/contact', 
+        `_csrf_token=${this.dataForm._csrf}&_email=${this.dataForm.email}&_subject=${this.dataForm.subject}&_body=${this.dataForm.body}`
+        ,
+      {
+        headers: {
+          'Content-type': 'application/x-www-form-urlencoded',
+        //   //'X-XSRF-TOKEN': this.getCsrf()
+        //   'X-AUTH-TOKEN': 'this.auth',
+        //   'Cookie': 'this.sessid'
+        }
+      }
+      
+     ).then(response => {
+        //var res = JSON.parse(response.body);
+          this.msg = response.body;
+
+        console.log(response);
+      }, 
+      error => {
+        console.log( error);
+      })
     }
   },
   props: {

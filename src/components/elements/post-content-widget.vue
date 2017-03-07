@@ -5,17 +5,20 @@
       <div class="post-mini-info">
         <div class="post-mini-title">
           <h2>
-            <router-link to="post">This is title of post</router-link>
+            <router-link to="post" v-text="post.title"></router-link>
           </h2>
         </div>
         <div class="post-mini-category">
-          <h2>Kategoria: Programming</h2>
+          <h2>Kategoria: <span v-text="post.category"></span></h2>
+        </div>
+        <div class="post-mini-category">
+          <h2>Autor: <span v-text="post.author"></span></h2>
         </div>
       </div>
     </header>
     <div class="post-entry">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius illum in nisi aspernatur quam molestiae id, laudantium architecto dicta voluptas nemo repudiandae optio facilis adipisci similique, necessitatibus vero doloribus at.
+      <p v-text="post.content">
+        
       </p>
     </div>
     <footer class="post-mini-footer">
@@ -27,7 +30,7 @@
           <span class="fa fa-comments">5</span>
         </div>
         <time datetime="22-10-2016 09:58:11" class="post-date">
-          <span class="post-time">22-10-2016 09:58:11</span>
+          <span class="post-time" >22-10-2016 09:58:11</span>
         </time>
       </div>
       <div class="read-more">
@@ -50,7 +53,12 @@ export default {
     }
   },
   props: {
-
+    post: {
+      type: Object,
+      default: function () {
+        return {  }
+      }
+    }
   },
   components: {
 
