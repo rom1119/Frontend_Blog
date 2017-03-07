@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     loadPosts: function () {
-      this.$http.get('http://localhost:81/symfony-project/api/web/app_dev.php/posts',   
+      this.$http.get('../api/web/posts',   
       {
       headers: {
           //'X-XSRF-TOKEN': this.getCsrf()

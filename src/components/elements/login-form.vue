@@ -100,7 +100,7 @@ export default {
       }
       )
       .then(response => {
-        this.msg = this.$root.getCsrfHeader(response);
+       // this.msg = this.$root.getCsrfHeader(response);
        this.credential._csrf = this.$root.getCsrfHeader(response);
         console.log(response);
       }, 

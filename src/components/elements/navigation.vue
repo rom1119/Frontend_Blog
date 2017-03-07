@@ -98,7 +98,7 @@ export default {
   methods: {
     logout: function () {
       this.$emit('logout');
-      this.$http.get('http://localhost:81/symfony-project/api/web/app_dev.php/logout', 
+      this.$http.get('../api/web/logout', 
       {
       headers: {
           //'X-XSRF-TOKEN': this.getCsrf()

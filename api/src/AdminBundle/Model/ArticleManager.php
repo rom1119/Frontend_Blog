@@ -45,7 +45,7 @@ class ArticleManager implements ArticleManagerInterface
   public function getAll()
   {
     $res = $this->dbRepository->findAll();
-    $arr = [];
+    $arr = array();
     $i = 0;
      foreach ($res as $key => $value) {
        $arr[$i]['title'] = $value->getTitle();

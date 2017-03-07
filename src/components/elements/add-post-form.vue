@@ -137,6 +137,7 @@ export default {
      ).then(response => {
         //var res = JSON.parse(response.body);
           this.msg = response.body.message;
+          this.loadCategories();
         console.log(response);
       }, 
       error => {

@@ -22,6 +22,7 @@ class ArticleController extends Controller
 
     $category_manager = $this->get('blog.admin.model.category_manager');
     $article_manager = $this->get('blog.admin.model.article_manager');
+    
     try{
      $tokenStorage = $this->get('security.token_storage');
      if(!is_object($user = $tokenStorage->getToken()->getUser())) {

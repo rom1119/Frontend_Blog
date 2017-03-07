@@ -13,6 +13,10 @@ $collection->add('loginSuccess', new Route('/', array(
     '_controller' => 'UserBundle:Default:loginSuccess'), array(),array(),null, null, array('GET','OPTIONS', 'POST', 'PUT')
 ));
 
+$collection->add('contact', new Route('/contact', array(
+    '_controller' => 'UserBundle:Default:sendMessage'), array(),array(),null, null, array('OPTIONS', 'POST')
+));
+
 $collection->add('register', new Route('/register', array(
     '_controller' => 'UserBundle:Registration:register'), array(),array(),null, null, array('OPTIONS', 'POST')
 ));
@@ -21,15 +25,10 @@ $collection->add('login_route', new Route('/login', array(
      '_controller' => 'UserBundle:Security:login'), array(),array(),null, null, array('GET')
 ));
 
- //  Routing for article
-
-$collection->add('get_articles', new Route('/posts', array(
-     '_controller' => 'UserBundle:Article:getArticles'), array(),array(),null, null, array('GET')
+$collection->add('get_csrf', new Route('/csrf', array(
+     '_controller' => 'UserBundle:Default:getCsrfToken'), array(),array(),null, null, array('GET')
 ));
 
-$collection->add('get_article', new Route('/post/{id}', array(
-     '_controller' => 'UserBundle:Article:getArticle'), array(),array(),null, null, array('GET')
-));
 
 
 return $collection;

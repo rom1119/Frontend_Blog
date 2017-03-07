@@ -1,10 +1,8 @@
 @mixin label-form-footer 
 {
-	legend {
-		span {
-			color: #cccccc;
-			font-size: 1.1em;
-		}
+	label {
+		color: #cccccc;
+		font-size: 1.1em;
 		margin: 10px 0;
 	}
 }

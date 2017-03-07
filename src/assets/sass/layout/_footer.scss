@@ -37,31 +37,41 @@ $padding-footer-li: 5px 0 0 5px;
 			@extend .header-section-footer;
 		}
 		form#contact-form-footer {
-			#contact-email {
+			.contact-form-element {
 				@include label-form-footer();
-				label {
-					width: 100%;
-					#email-input {
-						@extend .input-form-footer;
-					}
+				width: 100%;
+				#email-input {
+					@extend .input-form-footer;
 				}
+				@include msg('error');
 			}
-			#contact-message {
+
+			.contact-form-element {
 				@include label-form-footer();
+				width: 100%;
+				#subject-input {
+					@extend .input-form-footer;
+				}
+				@include msg('error');
+			}
+			.contact-form-element {
+				@include label-form-footer();
+				width: 100%;
 				#message-input {
 					@extend .input-form-footer;
 				}
+				@include msg('error');
 			}
-			#contact-send {
-				height: 45px;
-				label {
-					height: 100%;
-					#submit-input {
-						margin-top: 10px;
-						padding: 15px;
-						@include btn-form($footer-background);
-					}
+			.contact-form-element {
+
+				height: 100%;
+				#submit-input {
+					margin-top: 10px;
+					padding: 15px;
+					@include btn-form($footer-background);
 				}
+				@include msg('success');
+				
 			}
 		}
 	}
