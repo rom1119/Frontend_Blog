@@ -43,9 +43,9 @@ export default {
         _csrf: ''
       },
       data: {},
-      msg: 'dsd',     
-      auth: document.cookie.slice(document.cookie.indexOf("X-AUTH-TOKEN=")),
-      sessid: document.cookie.slice(document.cookie.indexOf("PHPSESSID=") + 11)
+      msg: '',     
+      //auth: document.cookie.slice(document.cookie.indexOf("X-AUTH-TOKEN=")),
+      //sessid: document.cookie.slice(document.cookie.indexOf("PHPSESSID=") + 11)
       
     }
     
@@ -101,7 +101,7 @@ export default {
       )
       .then(response => {
        // this.msg = this.$root.getCsrfHeader(response);
-       this.credential._csrf = this.$root.getCsrfHeader(response);
+       this.credential._csrf = this.$root.getCsrf(response);
         console.log(response);
       }, 
       error => {
