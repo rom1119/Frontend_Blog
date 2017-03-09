@@ -15,7 +15,9 @@
         <p>Wpisz nazwę użytkownika <span class="text-danger">*</span></p>
         <input type="text" name="_username" v-model="formData.username" class="" id="input-username" placeholder="user123" >
       </label>
-      <span class="has-user-error"></span>
+      <div class="msg-error">
+        <span v-text="msg.username"></span>
+      </div>
     </div>
     <div class="form-element" id="name-element-form">
       <fieldset>
@@ -29,6 +31,9 @@
             <p>Wpisz swoje imię</p>
             <input type="text" id="input-firstname" name="_firstName" v-model="formData.name" value="" placeholder="Jan, Michał, Jerzy">
           </label>
+          <div class="msg-error">
+            <span v-text="msg.name"></span>
+          </div>
           <label class="register-lastName col-sm-6 col-xs-12">
             <p>Wpisz swoje nazwisko</p>
             <input type="text" id="input-lastname" name="_lastName" v-model="formData.secondname" value="" placeholder="Nowak, Kowalski, Wiśniewski">
@@ -48,10 +53,16 @@
             <p>Wpisz hasło <span class="text-danger">*</span></p>
             <input type="password" name="_password" v-model="formData.password_first" id="input-password" min="6" placeholder="min. 6 znaków" >
           </label>
+          <div class="msg-error">
+            <span v-text="msg.pass_first"></span>
+          </div>
           <label for="input-password-conf" class="register-password col-sm-6 col-xs-12">
             <p>Potwierdż hasło <span class="text-danger">*</span></p>
             <input type="password" name="_password_conf" v-model="formData.password_conf" id="input-password-conf" min="6" placeholder="min. 6 znaków" >
           </label>
+          <div class="msg-error">
+            <span v-text="msg.pass_conf"></span>
+          </div>
         </div>
         <span class="password-error"></span>
       </fieldset>
@@ -124,6 +135,9 @@
             <p>Twój email <span class="text-danger">*</span></p>
             <input type="text" name="_email" v-model="formData.email" id="input-email" value="" placeholder="user123@domena.pl" >   
           </label>
+          <div class="msg-error">
+            <span v-text="msg.email"></span>
+          </div>
         </div>
       </fieldset>
     </div>
@@ -153,8 +167,11 @@
       <label for="" class="register-send">
         <input  type="submit" value="Zarejestruj" id="input-send">
       </label>
-      <div class="register-error">
-        <span v-text="msg"></span>
+      <div class="msg-success" v-show="msg.success">
+        <span v-text="msg.success"></span>
+      </div>
+      <div class="msg-error" v-show="msg.error">
+        <span v-text="msg.error"></span>
       </div>
     </div>
   </form>
@@ -168,6 +185,7 @@ export default {
   data () {
     return {
       formData: {
+        _csrf: '',
         name: '',
         secondname: '',
         username: '',
@@ -186,10 +204,13 @@ export default {
       
     }
   },
+  created: function (argument) {
+    this.$root.fetchCsrf(this.formData);
+  },
   methods: {
     register: function() {
-      this.$http.post('../api/web/register', 
-        `username=${this.formData.username}&pass_first=${this.formData.password_first}&pass_conf=${this.formData.password_conf}&email=${this.formData.email}&name=${this.formData.name}`
+      this.$http.post('../api/web/app_dev.php/register', 
+        `_csrf_token=${this.formData._csrf}&_username=${this.formData.username}&_pass_first=${this.formData.password_first}&_pass_conf=${this.formData.password_conf}&_email=${this.formData.email}&_name=${this.formData.name}`
       ,
       {
         headers: {

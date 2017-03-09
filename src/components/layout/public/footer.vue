@@ -83,8 +83,11 @@
             <div class="contact-form-element" id="contact-send">
               <label for="submit-input"></label>
               <input type="submit" @click.prevent="sendContactMessage" class="contact-submit" id="submit-input" value="Wyślij">
-              <div class="msg-success">
+              <div class="msg-success" v-show="msg.success">
                 <span v-text="msg.success"></span>
+              </div>
+              <div class="msg-error" v-show="msg.invalid_csrf">
+                <span v-text="msg.invalid_csrf"></span>
               </div>
             </div>
           </form>
@@ -122,7 +125,7 @@ export default {
   },
   methods: {
     sendContactMessage: function (argument) {
-      this.$http.post('../api/web/contact', 
+      this.$http.post('../api/web/app_dev.php/contact', 
         `_csrf_token=${this.dataForm._csrf}&_email=${this.dataForm.email}&_subject=${this.dataForm.subject}&_body=${this.dataForm.body}`
         ,
       {

@@ -23,6 +23,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use FOS\UserBundle\Model\UserInterface;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use UserBundle\Model\UserManager;
 use UserBundle\Entity\User;
 /**
@@ -35,20 +36,25 @@ class RegistrationController extends BaseController
 {
     public function registerAction(Request $request)
     {
+        if (!$this->isCsrfTokenValid('authenticate', $request->request->get('_csrf_token'))) {
+            $response['error'] = 'Wystapil problem z tokenem csrf';
+            return new JsonResponse($response);
+        }
+        
         $userManager = $this->get('blog.user.model.user_manager');
 
-        if(true === $response = $userManager->formValidate($request->request)) {
+        if(null === $response = $userManager->formValidate($request->request)) {
 
             $user = $userManager->createUser($request->request);
 
             if(true === $response = $userManager->userValidate($user, $request->request)) {
-                $response = $userManager->updateUser($user);
+                $response['success'] = $userManager->updateUser($user);
                 
             }
 
         }
 
-        return new Response($response);
+        return new JsonResponse($response);
     }
 
     /**

@@ -7,9 +7,14 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoder;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Validator\Validator\RecursiveValidator;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class UserManager  implements UserManagerInterface
 {
+  const NOT_BLANK_MESSAGE = 'To pole nie moze byc puste';
+  const EMAIL_MESSAGE = 'Musisz podac poprawny email';
+  const EQUAL_PASSWORDS_MESSAGE = 'Hasla musza byc takie same';
+  const LENGTH_PASSWORDS_MESSAGE = 'To pole musi posiadac min {{ limit }} znakow';
 	private $dbManager;
 	private $dbRepository;
 	private $encoder;
@@ -25,14 +30,33 @@ class UserManager  implements UserManagerInterface
 
 	public function formValidate($data)
 	{
-		if(empty($data->get('username')) || empty($data->get('pass_first')) || empty($data->get('email'))) {
-			return 'Musisz wypełnic obowiązkowe pola';
-		}
-		if($data->get('pass_first') !== $data->get('pass_conf')) {
-			return 'Hasła muszą być takie same';
-		}
+		$notBlank = new Assert\NotBlank();
+    $validEmail = new Assert\Email(array('checkMX' => true, 'checkHost' => true));
+    $equalPassword = new Assert\EqualTo($data->get('_pass_conf'));
+    $length = new Assert\Length(array('min' => 6));
 
-		return true;
+    $notBlank->message = self::NOT_BLANK_MESSAGE;
+    $validEmail->message = self::EMAIL_MESSAGE;
+    $equalPassword->message = self::EQUAL_PASSWORDS_MESSAGE;
+    $length->minMessage = self::LENGTH_PASSWORDS_MESSAGE;
+
+
+    $violations['username'] = $this->validator->validate($data->get('_username'), array($notBlank));
+    $violations['pass_first'] = $this->validator->validate($data->get('_pass_first'), array($notBlank, $equalPassword, $length));
+    $violations['pass_conf'] = $this->validator->validate($data->get('_pass_conf'), array($notBlank, $equalPassword, $length));
+    $violations['email'] = $this->validator->validate($data->get('_email'), array($notBlank, $validEmail));
+    $violations['name'] = $this->validator->validate($data->get('_name'), array($notBlank));
+
+    $response = null; 
+
+    foreach ($violations as $key => $type) {
+      foreach ($type as  $value) {
+        $response[$key] = $value->getMessage();
+      }
+    }
+      
+
+    return $response;
 		
 	}
 
@@ -40,8 +64,9 @@ class UserManager  implements UserManagerInterface
 	{
 		$errors = $this->validator->validate($user);
 
-		if($this->existUser($data->get('username'), $data->get('email'))) {
-			return "Taki użytkownik już istnieje";
+		if($this->existUser($data->get('_username'), $data->get('_email'))) {
+      $res['error'] = "Taki użytkownik już istnieje";
+			return $res;
 		}
 
     if (count($errors) > 0) {
@@ -51,8 +76,8 @@ class UserManager  implements UserManagerInterface
          * for debugging.
          */
         $errorsString =  $errors;
-
-        return $errorsString[0]->getMessage();
+        $res['error'] = $errorsString[0]->getMessage();
+        return $res;
     }
 
     return true;
@@ -66,15 +91,15 @@ class UserManager  implements UserManagerInterface
 		// }
 		//$user->setBirthdayDate(new \DateTime($data->get('birthday_date')));
 
-		$user->setName($data->get('name'));
-		$user->setSecondName($data->get('secondname'));
-		$user->setUsername($data->get('username'));
-		$user->setUsernameCanonical($data->get('username'));
+		$user->setName($data->get('_name'));
+		$user->setSecondName($data->get('_secondname'));
+		$user->setUsername($data->get('_username'));
+		$user->setUsernameCanonical($data->get('_username'));
 		$user->setEnabled(true);
-		$user->setGender($data->get('gender'));
-		$user->setPhone($data->get('phone'));
-		$user->setEmail($data->get('email'));
-		$user->setEmailCanonical($data->get('email'));
+		$user->setGender($data->get('_gender'));
+		$user->setPhone($data->get('_phone'));
+		$user->setEmail($data->get('_email'));
+		$user->setEmailCanonical($data->get('_email'));
 		$user->setSuperAdmin(true);
 		//$user->setAvatar($data->get('avatar'));
 		//$user->setDescription($data->get('desc'));
@@ -82,7 +107,7 @@ class UserManager  implements UserManagerInterface
 		//$user->setWebsite($data->get('website'));
 	//	$password = $this->encoder->encodePassword($data->get('password_first'), null);
 		//$password = $encoder->encodePassword($user, $data['password_first']);
-    $user->setPlainPassword($data->get('pass_first'));
+    $user->setPlainPassword($data->get('_pass_first'));
 
    
 
@@ -107,9 +132,14 @@ class UserManager  implements UserManagerInterface
 
 	}
 
-	public function isCorrectPassword($encoded, $raw)
+	public function isPasswordValid($encoded, $raw)
 	{
 		return $this->bcryptEncoder->isPasswordValid($encoded, $raw, null);
+	}
+
+	public function isPasswordsEqual($password, $password_conf)
+	{
+		return $password === $password_conf;
 	}
 
 

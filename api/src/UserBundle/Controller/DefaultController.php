@@ -43,7 +43,8 @@ class DefaultController extends Controller
      public function sendMessageAction(Request $request)
      {
         if (!$this->isCsrfTokenValid('authenticate', $request->request->get('_csrf_token'))) {
-            return new Response('Wystapil problem z tokenem csrf');
+            $response['invalid_csrf'] = 'Wystapil problem z tokenem csrf';
+            return new JsonResponse($response);
         }
 
        $contact_manager = $this->get('blog.user.message.contact_manager');
